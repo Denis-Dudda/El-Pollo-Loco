@@ -15,7 +15,7 @@ class Character extends MovableObject {
     'img/2_character_pepe/1_idle/idle/I-9.png',
     'img/2_character_pepe/1_idle/idle/I-10.png',
   ];
-  currentImage = 0;
+  
 
 
   // der constructor wird immer zu erst ausgeführt wenn die klasse neu erstellt wird 
