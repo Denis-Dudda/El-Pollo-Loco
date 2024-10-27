@@ -15,7 +15,7 @@ class Character extends MovableObject {
     'img/2_character_pepe/1_idle/idle/I-9.png',
     'img/2_character_pepe/1_idle/idle/I-10.png',
   ];
-  
+  world;
 
 
   // der constructor wird immer zu erst ausgeführt wenn die klasse neu erstellt wird 
@@ -30,10 +30,12 @@ class Character extends MovableObject {
 
   animate() {
     setInterval(() => {
-      let i = this.currentImage % this.IMAGES_CHARACTER.length;
-      let path = this.IMAGES_CHARACTER[i];
-      this.img = this.imageCache[path];
-      this.currentImage++;
+      if (this.world,keyboard.RIGHT) {
+        let i = this.currentImage % this.IMAGES_CHARACTER.length;
+        let path = this.IMAGES_CHARACTER[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+      }
     }, 400);
   }
 
