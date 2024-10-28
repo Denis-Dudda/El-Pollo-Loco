@@ -7,7 +7,7 @@ class MovableObject {
   imageCache = {};
   currentImage = 0;
   speed = 0.1;
- 
+  otherDirection = false;
 
   loadImage(path){
     this.img = new Image(); // Image muss nicht neu definiert werden kommt vom js
