@@ -21,6 +21,8 @@ class World {
   canvas;
   ctx;
   keyboard;
+  camera_x = 0;
+
 
   constructor(canvas, keyboard){
     this.ctx = canvas.getContext('2d');
@@ -37,12 +39,13 @@ class World {
 
   draw(){
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.translate(this.camera_x, 0); // zeichnet alle elemente 100 pixel weiter links, sorgt dafür das die camera beim character bleibt  
     this.addObjectsToMap(this.backgroundObjects)   
     this.addToMap(this.character);
     
     this.addObjectsToMap(this.enemies); 
     this.addObjectsToMap(this.clouds); 
-
+    this.ctx.translate(-this.camera_x, 0); // verschiebt das bild dann wieder zurück so das die camera am character bleibt 
 
     // draw wird immer wieder aufgerufen
     let self = this;
