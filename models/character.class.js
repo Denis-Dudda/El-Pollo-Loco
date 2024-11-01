@@ -1,6 +1,6 @@
 class Character extends MovableObject {
   x = 120;
-  y = 80;
+  y = 180;
   height = 250;
   width = 150;
   speed = 10;
@@ -24,7 +24,8 @@ class Character extends MovableObject {
     'img/2_character_pepe/3_jump/J-38.png',
     'img/2_character_pepe/3_jump/J-39.png',
     'img/2_character_pepe/3_jump/J-40.png',
-  ]
+  ];
+
   world;
   waking_sound = new Audio('audio/walking.mp3')
 
@@ -55,6 +56,11 @@ class Character extends MovableObject {
       this.otherDirection = true;
       this.waking_sound.play();
       }
+
+      if (this.world.keyboard.UP && !this.isAboveGround()) {
+        this.speedY = 30;
+      }
+
       this.world.camera_x = -this.x + 100; // wo sich der character befindet jetzt 100 pixel links vom rand 
     }, 1000 / 60);
 
@@ -62,11 +68,12 @@ class Character extends MovableObject {
     setInterval(() => {
       if (this.isAboveGround()) {
         this.playAnimation(this.IMAGES_JUMPING);
-      }
+      }else{
 
       if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
         this.playAnimation(this.IMAGES_WALKING);
       }
+    }
     }, 50);
   }
 
