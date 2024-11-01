@@ -6,6 +6,7 @@ class World {
   ctx;
   keyboard;
   camera_x = 0;
+  statusBar = new StatusBar();
 
 
   constructor(canvas, keyboard){
@@ -36,7 +37,8 @@ class World {
   draw(){
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.translate(this.camera_x, 0); // zeichnet alle elemente 100 pixel weiter links, sorgt dafür das die camera beim character bleibt  
-    this.addObjectsToMap(this.level.backgroundObjects)   
+    this.addObjectsToMap(this.level.backgroundObjects);   
+    this.addToMap(this.statusBar);
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.bottles);
