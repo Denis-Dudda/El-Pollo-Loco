@@ -13,6 +13,7 @@ class Character extends MovableObject {
     'img/2_character_pepe/2_walk/W-26.png',
   ];
   world;
+  waking_sound = new Audio('audio/walking.mp3')
 
 
   // der constructor wird immer zu erst ausgeführt wenn die klasse neu erstellt wird 
@@ -26,16 +27,20 @@ class Character extends MovableObject {
 
 
   animate() {
+    
     // animation für die seiten bewegung 
     setInterval(() => {
+      this.waking_sound.pause();
       if (this.world,keyboard.RIGHT && this.x < this.world.level.level_end_x) {
       this.x += this.speed;
       this.otherDirection = false;
+      this.waking_sound.play();
       }
 
       if (this.world,keyboard.LEFT && this.x > -600) {
       this.x -= this.speed;
       this.otherDirection = true;
+      this.waking_sound.play();
       }
       this.world.camera_x = -this.x + 100; // wo sich der character befindet jetzt 100 pixel links vom rand 
     }, 1000 / 60);
