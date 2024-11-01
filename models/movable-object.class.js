@@ -45,11 +45,14 @@ class MovableObject {
   }
 
   drawFrame(ctx){
-    ctx.beginPath();
-    ctx.lineWidth = '5';
-    ctx.strokeStyle = 'blue';
-    ctx.rect(this.x, this.y, this.width, this.height);
-    ctx.stroke();
+    if (this instanceof Character || this instanceof Chicken || this instanceof Coin || this instanceof Bottle || this instanceof EndBoss) {
+      ctx.beginPath();
+      ctx.lineWidth = '5';
+      ctx.strokeStyle = 'blue';
+      ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.stroke();      
+    }
+
   }
 
   playAnimation(images){
