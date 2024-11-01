@@ -23,7 +23,6 @@ class Character extends MovableObject {
     'img/2_character_pepe/3_jump/J-37.png',
     'img/2_character_pepe/3_jump/J-38.png',
     'img/2_character_pepe/3_jump/J-39.png',
-    'img/2_character_pepe/3_jump/J-40.png',
   ];
 
   world;
@@ -46,19 +45,17 @@ class Character extends MovableObject {
     setInterval(() => {
       this.waking_sound.pause();
       if (this.world,keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-      this.x += this.speed;
-      this.otherDirection = false;
-      this.waking_sound.play();
+        this.moveRight();
+        this.waking_sound.play();
       }
 
       if (this.world,keyboard.LEFT && this.x > -600) {
-      this.x -= this.speed;
-      this.otherDirection = true;
+        this.moveLeft();
       this.waking_sound.play();
       }
 
-      if (this.world.keyboard.UP && !this.isAboveGround()) {
-        this.speedY = 30;
+      if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+        this.jump();
       }
 
       this.world.camera_x = -this.x + 100; // wo sich der character befindet jetzt 100 pixel links vom rand 
@@ -79,7 +76,7 @@ class Character extends MovableObject {
 
 
 jump(){
-
+  this.speedY = 30;
 }
 
 
