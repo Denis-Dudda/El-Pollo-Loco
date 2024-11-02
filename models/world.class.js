@@ -37,6 +37,7 @@ class World {
     if (this.keyboard.D && this.bottleCount > 0) {
       let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
       this.throwableObjects.push(bottle);
+      this.bottleCount--;// minus anzahl für jeden wurf
     }
   }
 
