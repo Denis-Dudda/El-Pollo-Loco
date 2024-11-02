@@ -10,6 +10,7 @@ class World {
   coinBar = new CoinBar();
   bottleBar = new BottleBar();
   throwableObjects = [];
+  bottleCount = 0;
 
 
   constructor(canvas, keyboard){
@@ -33,7 +34,7 @@ class World {
   }
 
   checkThrwoObjects(){
-    if (this.keyboard.D) {
+    if (this.keyboard.D && this.bottleCount > 0) {
       let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
       this.throwableObjects.push(bottle);
     }
@@ -55,6 +56,7 @@ class World {
     this.level.bottles.forEach((bottle) => {
       if (this.character.isColliding(bottle)){
         this.character.catchBottle();
+        this.bottleCount++;
         this.bottleBar.setPercentage(this.character.bottleEnergy);
       }
     });
