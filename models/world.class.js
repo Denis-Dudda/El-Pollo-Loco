@@ -7,6 +7,7 @@ class World {
   keyboard;
   camera_x = 0;
   statusBar = new StatusBar();
+  coinBar = new CoinBar();
 
 
   constructor(canvas, keyboard){
@@ -28,6 +29,7 @@ class World {
         if (this.character.isColliding(enemy)){
           this.character.hit();
           this.statusBar.setPercentage(this.character.energy);
+          this.coinBar.setPercentage(this.character.energy);
         }
       })
     }, 500);
@@ -39,6 +41,7 @@ class World {
     this.addObjectsToMap(this.level.backgroundObjects);   
     this.ctx.translate(-this.camera_x, 0); // (off)
     this.addToMap(this.statusBar);
+    this.addToMap(this.coinBar);
     this.ctx.translate(this.camera_x, 0); // (on)
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.coins);
