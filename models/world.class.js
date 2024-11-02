@@ -48,8 +48,8 @@ class World {
     });
     this.level.coins.forEach((coin) => {
       if (this.character.isColliding(coin)){
-        
-        this.coinBar.setPercentage(this.character.energy);
+        this.character.catchCoin();
+        this.coinBar.setPercentage(this.character.coinEnergy);
       }
     });
     this.level.bottles.forEach((bottle) => {

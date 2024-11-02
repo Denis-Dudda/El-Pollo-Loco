@@ -8,6 +8,7 @@ class MovableObject extends DrawableObject{
   speedY = 0;
   acceleration = 2.5;
   energy = 100;
+  coinEnergy = 0;
   lastHit = 0;
 
 
@@ -36,7 +37,14 @@ class MovableObject extends DrawableObject{
             this.x < mo.x &&
             this.y < mo.y + mo.height;
 
-}
+  }
+
+  catchCoin(){
+    this.coinEnergy += 10;
+    if (this.coinEnergy > 100) {
+      this.coinEnergy = 100;
+  }
+  }
 
   hit(){
     this.energy -= 5;
