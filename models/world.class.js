@@ -39,6 +39,12 @@ class World {
           this.coinBar.setPercentage(this.character.energy);
         }
       });
+      this.level.bottles.forEach((bottle) => {
+        if (this.character.isColliding(bottle)){
+          this.character.hit();
+          this.bottleBar.setPercentage(this.character.energy);
+        }
+      });
     }, 500);
   }
 
