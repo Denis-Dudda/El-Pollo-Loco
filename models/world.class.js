@@ -9,7 +9,7 @@ class World {
   statusBar = new StatusBar();
   coinBar = new CoinBar();
   bottleBar = new BottleBar();
-  throwableObjects = [new ThrowableObject()];
+  throwableObjects = [];
 
 
   constructor(canvas, keyboard){
@@ -18,35 +18,46 @@ class World {
     this.keyboard = keyboard;
     this.draw();
     this.setWorld();
-    this.checkCollsions();
+    this.run();
   }
 
   setWorld() {
     this.character.world = this;
   }
 
-  checkCollsions(){
+  run(){
     setInterval(() => {
-      this.level.enemies.forEach((enemy) => {
-        if (this.character.isColliding(enemy)){
-          this.character.hit();
-          this.statusBar.setPercentage(this.character.energy);
-
-        }
-      });
-      this.level.coins.forEach((coin) => {
-        if (this.character.isColliding(coin)){
-          this.character.hit();
-          this.coinBar.setPercentage(this.character.energy);
-        }
-      });
-      this.level.bottles.forEach((bottle) => {
-        if (this.character.isColliding(bottle)){
-          this.character.hit();
-          this.bottleBar.setPercentage(this.character.energy);
-        }
-      });
+      this.checkCollisions();
+      this.checkThrwoObjects();
     }, 500);
+  }
+
+  checkThrwoObjects(){
+    if (this.keyboard.D) {
+      let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+      this.throwableObjects.push(bottle);
+    }
+  }
+
+  checkCollisions(){
+    this.level.enemies.forEach((enemy) => {
+      if (this.character.isColliding(enemy)){
+        this.character.hit();
+        this.statusBar.setPercentage(this.character.energy);
+      }
+    });
+    this.level.coins.forEach((coin) => {
+      if (this.character.isColliding(coin)){
+        this.character.hit();
+        this.coinBar.setPercentage(this.character.energy);
+      }
+    });
+    this.level.bottles.forEach((bottle) => {
+      if (this.character.isColliding(bottle)){
+        this.character.hit();
+        this.bottleBar.setPercentage(this.character.energy);
+      }
+    });
   }
 
   draw(){
