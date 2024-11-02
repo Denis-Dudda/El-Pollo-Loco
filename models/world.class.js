@@ -54,8 +54,8 @@ class World {
     });
     this.level.bottles.forEach((bottle) => {
       if (this.character.isColliding(bottle)){
-        
-        this.bottleBar.setPercentage(this.character.energy);
+        this.character.catchBottle();
+        this.bottleBar.setPercentage(this.character.bottleEnergy);
       }
     });
   }
