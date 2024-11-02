@@ -8,11 +8,11 @@ class Bottle extends MovableObject {
     'img/6_salsa_bottle/2_salsa_bottle_on_ground.png',
   ];
 
-  constructor(){
+  constructor(x, y){
     super().loadImage('img/6_salsa_bottle/1_salsa_bottle_on_ground.png')
     this.loadImages(this.BOTTLE_MOVING);
-    this.x = 300;
-    this.y = 350;
+    this.x = x;
+    this.y = y;
     this.animate();
   }
 
