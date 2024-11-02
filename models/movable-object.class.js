@@ -40,7 +40,7 @@ class MovableObject extends DrawableObject{
   }
 
   catchCoin(){
-    this.coinEnergy += 10;
+    this.coinEnergy += 20;
     if (this.coinEnergy > 100) {
       this.coinEnergy = 100;
   }
