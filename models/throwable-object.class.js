@@ -36,7 +36,12 @@ class ThrowableObject extends MovableObject {
       this.x += 10;
     }, 30);
     setInterval(() => {
-      this.playAnimation(this.IMAGES_BOTTLETHROW);
+      
+      if (this.y > 350) {
+        this.playAnimation(this.IMAGES_SPLASH);
+      }else {
+        this.playAnimation(this.IMAGES_BOTTLETHROW);
+      }
     }, 75);
   }
 
