@@ -9,6 +9,7 @@ class World {
   statusBar = new StatusBar();
   coinBar = new CoinBar();
   bottleBar = new BottleBar();
+  throwableObjects = [new ThrowableObject()];
 
 
   constructor(canvas, keyboard){
@@ -62,6 +63,7 @@ class World {
     this.addObjectsToMap(this.level.bottles);
     this.addObjectsToMap(this.level.enemies); 
     this.addObjectsToMap(this.level.clouds); 
+    this.addObjectsToMap(this.throwableObjects); 
     this.ctx.translate(-this.camera_x, 0); // verschiebt das bild dann wieder zurück so das die camera am character bleibt 
 
     // draw wird immer wieder aufgerufen

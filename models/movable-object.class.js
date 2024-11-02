@@ -22,15 +22,12 @@ class MovableObject extends DrawableObject{
   }
 
   isAboveGround() {
+    if (this instanceof ThrowableObject) { // flasche fällt durch den boden
+      return true;
+    }else {
     return this.y < 180;
+     }
   }
-
-
-
-
-
-
-
 
 
   isColliding (mo) {
