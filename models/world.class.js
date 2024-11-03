@@ -37,7 +37,7 @@ class World {
     if (this.keyboard.D && this.bottleCount > 0) {
       let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
       this.throwableObjects.push(bottle);
-      this.bottleCount--;// minus anzahl für jeden wurf
+      this.bottleCount--;// minus für jeden wurf
     }
   }
 
@@ -46,6 +46,7 @@ class World {
       if (this.character.isColliding(enemy)){
         this.character.hit();
         this.statusBar.setPercentage(this.character.energy);
+
       }
     });
     this.level.coins.forEach((coin) => {
@@ -117,6 +118,10 @@ class World {
   flipImageBack(mo){
     mo.x = mo.x * -1
     this.ctx.restore();
+  }
+
+  clearAllIntervals() {
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
   }
 
 }

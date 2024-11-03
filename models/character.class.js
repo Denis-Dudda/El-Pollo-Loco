@@ -85,7 +85,10 @@ class Character extends MovableObject {
     // animation für sie bilder die angezeigt werden z.b das gehen 
     setInterval(() => {
       if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD);
+        this.playAnimation(this.IMAGES_DEAD); 
+        setTimeout(() => {
+          this.world.clearAllIntervals();
+        }, 100);
       }else 
       if (this.isHurt()) {
         this.playAnimation(this.IMAGES_HURT);

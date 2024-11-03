@@ -24,7 +24,7 @@ class MovableObject extends DrawableObject{
   }
 
   isAboveGround() {
-    if (this instanceof ThrowableObject) { // flasche fällt durch den boden
+    if (this instanceof ThrowableObject) { // flasche fällt auf den boden
       return this.y < 350;
     }else {
     return this.y < 180;
@@ -55,7 +55,7 @@ class MovableObject extends DrawableObject{
   }
 
   hit(){
-    this.energy -= 5;
+    this.energy -= 20;
     if (this.energy < 0) {
         this.energy = 0;
     } else {
