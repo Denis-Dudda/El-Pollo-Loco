@@ -1,5 +1,10 @@
 class DrawableObject {
 
+  offsetX = 0;
+  offsetY = 0;
+  offsetWidth = 0;
+  offsetHeight = 0;
+
   img;
   imageCache = {};
   currentImage = 0;
@@ -33,11 +38,17 @@ class DrawableObject {
   }
 
   drawFrame(ctx){
+    
     if (this instanceof Character || this instanceof Chicken || this instanceof Coin || this instanceof Bottle || this instanceof EndBoss) {
       ctx.beginPath();
       ctx.lineWidth = '5';
       ctx.strokeStyle = 'blue';
-      ctx.rect(this.x, this.y, this.width, this.height);
+      ctx.rect(
+        this.x + this.offsetX,                       // X-Position mit linkem Offset
+        this.y + this.offsetY,                       // Y-Position mit oberem Offset
+        this.width - this.offsetX - this.offsetWidth, // Breite mit linken und rechten Offsets
+        this.height - this.offsetY - this.offsetHeight // Höhe mit oberen und unteren Offsets
+      );
       ctx.stroke();      
     }
 

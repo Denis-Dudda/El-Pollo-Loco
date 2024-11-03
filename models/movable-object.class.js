@@ -1,6 +1,9 @@
 class MovableObject extends DrawableObject{
 
- 
+  offsetX = 0;
+  offsetY = 0;
+  offsetWidth = 0;
+  offsetHeight = 0;
 
 
   speed = 0.1;
@@ -33,12 +36,20 @@ class MovableObject extends DrawableObject{
 
 
   isColliding (mo) {
-    return  this.x + this.width > mo.x &&
-            this.y + this.height > mo.y &&
-            this.x < mo.x &&
-            this.y < mo.y + mo.height;
-
+    return (
+      this.x + this.offsetX + this.width - this.offsetWidth > mo.x + mo.offsetX &&
+      this.y + this.offsetY + this.height - this.offsetHeight > mo.y + mo.offsetY &&
+      this.x + this.offsetX < mo.x + mo.offsetX + mo.width - mo.offsetWidth &&
+      this.y + this.offsetY < mo.y + mo.offsetY + mo.height - mo.offsetHeight
+  );
   }
+
+  setCollisionOffsets(offsetX, offsetY, offsetWidth, offsetHeight) {
+    this.offsetX = offsetX;
+    this.offsetY = offsetY;
+    this.offsetWidth = offsetWidth;
+    this.offsetHeight = offsetHeight;
+}
 
   catchCoin(){
     this.coinEnergy += 20;

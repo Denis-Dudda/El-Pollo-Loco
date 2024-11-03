@@ -11,6 +11,7 @@ class Bottle extends MovableObject {
   constructor(x, y){
     super().loadImage('img/6_salsa_bottle/1_salsa_bottle_on_ground.png')
     this.loadImages(this.BOTTLE_MOVING);
+    this.setCollisionOffsets(20, 15, 15, 10);
     this.x = x;
     this.y = y;
     this.animate();

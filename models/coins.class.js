@@ -8,6 +8,7 @@ class Coin extends MovableObject {
   constructor(x, y){
     super().loadImage('img/8_coin/coin_1.png')
     this.loadImages(this.COIN_MOVING);
+    this.setCollisionOffsets(25, 45, 25, 45);
     this.x = x;
     this.y = y;
     this.animate();
