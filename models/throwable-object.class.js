@@ -38,9 +38,11 @@ class ThrowableObject extends MovableObject {
        if (this.y > 350) {
           this.playAnimation(this.IMAGES_SPLASH);
           this.x -= 10;
+
         }else {
           this.playAnimation(this.IMAGES_BOTTLETHROW);
         }
+        
      }, 40);
     }
 

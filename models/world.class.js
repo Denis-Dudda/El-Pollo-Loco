@@ -46,13 +46,14 @@ class World {
       if (this.character.isColliding(enemy)){
         this.character.hit();
         this.statusBar.setPercentage(this.character.energy);
-
       }
     });
     this.level.coins.forEach((coin) => {
       if (this.character.isColliding(coin)){
         this.character.catchCoin();
         this.coinBar.setPercentage(this.character.coinEnergy);
+        const index = this.level.coins.indexOf(coin);
+        this.level.coins.splice(index , 1)
       }
     });
     this.level.bottles.forEach((bottle) => {
@@ -60,6 +61,8 @@ class World {
         this.character.catchBottle();
         this.bottleCount++;
         this.bottleBar.setPercentage(this.character.bottleEnergy);
+        const index = this.level.bottles.indexOf(bottle);
+        this.level.bottles.splice(index , 1)
       }
     });
   }
