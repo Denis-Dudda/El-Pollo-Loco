@@ -64,13 +64,14 @@ class World {
         const index = this.level.bottles.indexOf(bottle);
         this.level.bottles.splice(index , 1)
       }
-    });
+    });      
   }
 
   draw(){
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.translate(this.camera_x, 0); // (on)zeichnet alle elemente 100 pixel weiter links, sorgt dafür das die camera beim character bleibt  
     this.addObjectsToMap(this.level.backgroundObjects);   
+    this.addObjectsToMap(this.level.clouds);
     this.ctx.translate(-this.camera_x, 0); // (off)
     this.addToMap(this.statusBar);
     this.addToMap(this.coinBar);
@@ -80,7 +81,7 @@ class World {
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.bottles);
     this.addObjectsToMap(this.level.enemies); 
-    this.addObjectsToMap(this.level.clouds); 
+ 
     this.addObjectsToMap(this.throwableObjects); 
     this.ctx.translate(-this.camera_x, 0); // verschiebt das bild dann wieder zurück so das die camera am character bleibt 
 

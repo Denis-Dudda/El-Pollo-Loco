@@ -1,9 +1,6 @@
 class MovableObject extends DrawableObject{
 
-  offsetX = 0;
-  offsetY = 0;
-  offsetWidth = 0;
-  offsetHeight = 0;
+
 
 
   speed = 0.1;
