@@ -66,16 +66,12 @@ class World {
         this.level.bottles.splice(index , 1)
       }
     }); 
-    this.level.enemies.forEach((enemy, index) => {
+    this.level.enemies.forEach((enemy, index) => {    // wurf kollision
       this.throwableObjects.forEach((bottle, j) => {
         if (bottle.isColliding(enemy)) {
         this.level.enemies.splice(index , 1)
-        this.throwableObjects.splice(j , 1)
-        
+        this.throwableObjects.splice(j , 1)        
         }
-        
-        
-        
       });
     });
   }
