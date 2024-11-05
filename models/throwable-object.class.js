@@ -22,6 +22,7 @@ class ThrowableObject extends MovableObject {
     super().loadImage('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png')
     this.loadImages(this.IMAGES_BOTTLETHROW);
     this.loadImages(this.IMAGES_SPLASH);
+    this.setCollisionOffsets(0, 0, 0, 0);
     this.x = x;
     this.y = y;
     this.height = 60;

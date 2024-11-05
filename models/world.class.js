@@ -12,7 +12,6 @@ class World {
   throwableObjects = [];
   bottleCount = 0;
 
-
   constructor(canvas, keyboard){
     this.ctx = canvas.getContext('2d');
     this.canvas = canvas;
@@ -31,6 +30,7 @@ class World {
       this.checkCollisions();
       this.checkThrwoObjects();
     }, 500);
+
   }
 
   checkThrwoObjects(){
@@ -39,6 +39,7 @@ class World {
       this.throwableObjects.push(bottle);
       this.bottleCount--;// minus für jeden wurf
     }
+    
   }
 
   checkCollisions(){
@@ -53,7 +54,7 @@ class World {
         this.character.catchCoin();
         this.coinBar.setPercentage(this.character.coinEnergy);
         const index = this.level.coins.indexOf(coin);
-        this.level.coins.splice(index , 1)
+        this.level.coins.splice(index , 1);
       }
     });
     this.level.bottles.forEach((bottle) => {
@@ -64,7 +65,19 @@ class World {
         const index = this.level.bottles.indexOf(bottle);
         this.level.bottles.splice(index , 1)
       }
-    });      
+    }); 
+    this.level.enemies.forEach((enemy, index) => {
+      this.throwableObjects.forEach((bottle, j) => {
+        if (bottle.isColliding(enemy)) {
+        this.level.enemies.splice(index , 1)
+        this.throwableObjects.splice(j , 1)
+        
+        }
+        
+        
+        
+      });
+    });
   }
 
   draw(){
