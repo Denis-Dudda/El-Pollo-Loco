@@ -28,8 +28,8 @@ class World {
   run(){
     setInterval(() => {
       this.checkCollisions();
-      this.checkThrwoObjects();
-    }, 500);
+      this.checkThrwoObjects();         // intervalle muss noch angepasst werden und funktionen trennen mit mehr intervallen !!!!!!!!!!!!!!!!!!!!!!!!!
+    }, 100);                          // intervalle muss noch angepasst werden und funktionen trennen mit mehr intervallen !!!!!!!!!!!!!!!!!!!!!!!!!
 
   }
 
@@ -39,6 +39,9 @@ class World {
       this.throwableObjects.push(bottle);
       this.bottleCount--;// minus für jeden wurf
       this.removeBottle();
+      this.character.bottleEnergy = this.character.bottleEnergy - 20;
+      this.bottleBar.setPercentage(this.character.bottleEnergy);
+      console.log(this.character.bottleEnergy);
     }
   }
 
