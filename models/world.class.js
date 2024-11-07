@@ -38,8 +38,14 @@ class World {
       let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
       this.throwableObjects.push(bottle);
       this.bottleCount--;// minus für jeden wurf
+      this.removeBottle();
     }
-    
+  }
+
+  removeBottle(){
+    setTimeout(() => {
+      this.throwableObjects.splice(0 , 1) // entfernt die flaschen nach dem aufprall auf dem boden
+    }, 1300);
   }
 
   checkCollisions(){

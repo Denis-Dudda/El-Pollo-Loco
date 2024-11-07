@@ -34,7 +34,6 @@ class DrawableObject {
       img.src = path;
       this.imageCache[path] = img;      
     });
-
   }
 
   drawFrame(ctx){
@@ -53,10 +52,5 @@ class DrawableObject {
     }
 
   }
-
-
-
-
-
 
 }
