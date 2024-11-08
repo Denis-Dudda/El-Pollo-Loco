@@ -31,7 +31,8 @@ class World {
       this.checkCollisions();
       this.checkCoinCollision();
       this.checkBottleCollision();
-      this.checkThrwoObjects();         // intervalle muss noch angepasst werden und funktionen trennen mit mehr intervallen !!!!!!!!!!!!!!!!!!!!!!!!!
+      this.checkThrwoObjects();
+      this.checkJumpOn();         // intervalle muss noch angepasst werden und funktionen trennen mit mehr intervallen !!!!!!!!!!!!!!!!!!!!!!!!!
     }, 100);                          // intervalle muss noch angepasst werden und funktionen trennen mit mehr intervallen !!!!!!!!!!!!!!!!!!!!!!!!!
   }
 
@@ -98,6 +99,16 @@ class World {
     }); 
   }
 
+  checkJumpOn(){
+    if (this.character.isAboveGround()) {
+      this.level.enemies.forEach((enemy, i) => {
+        if (this.character.jumpOnEnemy(enemy)){
+          this.level.enemies.splice(i , 1)       
+        }
+      });      
+    }
+  }
+
   draw(){
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.translate(this.camera_x, 0); // (on)zeichnet alle elemente 100 pixel weiter links, sorgt dafür das die camera beim character bleibt  
@@ -112,7 +123,6 @@ class World {
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.bottles);
     this.addObjectsToMap(this.level.enemies); 
- 
     this.addObjectsToMap(this.throwableObjects); 
     this.ctx.translate(-this.camera_x, 0); // verschiebt das bild dann wieder zurück so das die camera am character bleibt 
 

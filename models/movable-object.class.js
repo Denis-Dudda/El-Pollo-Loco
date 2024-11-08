@@ -41,6 +41,19 @@ class MovableObject extends DrawableObject{
   );
   }
 
+  jumpOnEnemy(mo) {
+    let xTolerance = 10; // Toleranz in Pixeln für die horizontale Kollision
+    let yTolerance = 60; // Toleranz in Pixeln für die vertikale Kollision
+
+    return (
+        this.x + this.offsetX + this.width - this.offsetWidth - xTolerance > mo.x + mo.offsetX &&
+        this.x + this.offsetX + xTolerance < mo.x + mo.offsetX + mo.width - mo.offsetWidth &&
+        this.y + this.offsetY + this.height - this.offsetHeight - yTolerance > mo.y + mo.offsetY &&
+        this.y + this.offsetY + yTolerance < mo.y + mo.offsetY + mo.height - mo.offsetHeight &&
+        this.speedY < 0 // Stellt sicher, dass der Charakter nach unten fällt
+    );
+}
+
   setCollisionOffsets(offsetX, offsetY, offsetWidth, offsetHeight) {
     this.offsetX = offsetX;
     this.offsetY = offsetY;
