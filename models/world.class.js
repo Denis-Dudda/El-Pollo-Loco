@@ -19,6 +19,7 @@ class World {
     this.draw();
     this.setWorld();
     this.run();
+    this.characterCollision();
   }
 
   setWorld() {
@@ -28,10 +29,22 @@ class World {
   run(){
     setInterval(() => {
       this.checkCollisions();
+      this.checkCoinCollision();
+      this.checkBottleCollision();
       this.checkThrwoObjects();         // intervalle muss noch angepasst werden und funktionen trennen mit mehr intervallen !!!!!!!!!!!!!!!!!!!!!!!!!
     }, 100);                          // intervalle muss noch angepasst werden und funktionen trennen mit mehr intervallen !!!!!!!!!!!!!!!!!!!!!!!!!
-
   }
+
+    characterCollision(){
+      setInterval(() => {
+        this.level.enemies.forEach((enemy) => {
+          if (this.character.isColliding(enemy)){
+            this.character.hit();
+            this.statusBar.setPercentage(this.character.energy);
+          }
+        });
+      }, 800);
+    }
 
   checkThrwoObjects(){
     if (this.keyboard.D && this.bottleCount > 0) {
@@ -52,12 +65,17 @@ class World {
   }
 
   checkCollisions(){
-    this.level.enemies.forEach((enemy) => {
-      if (this.character.isColliding(enemy)){
-        this.character.hit();
-        this.statusBar.setPercentage(this.character.energy);
-      }
+    this.level.enemies.forEach((enemy, index) => {    // wurf kollision
+      this.throwableObjects.forEach((bottle, j) => {
+        if (bottle.isColliding(enemy)) {
+        this.level.enemies.splice(index , 1)
+        this.throwableObjects.splice(j , 1)        
+        }
+      });
     });
+  }
+
+  checkCoinCollision(){
     this.level.coins.forEach((coin) => {
       if (this.character.isColliding(coin)){
         this.character.catchCoin();
@@ -66,6 +84,9 @@ class World {
         this.level.coins.splice(index , 1);
       }
     });
+  }
+
+  checkBottleCollision(){
     this.level.bottles.forEach((bottle) => {
       if (this.character.isColliding(bottle)){
         this.character.catchBottle();
@@ -75,14 +96,6 @@ class World {
         this.level.bottles.splice(index , 1)
       }
     }); 
-    this.level.enemies.forEach((enemy, index) => {    // wurf kollision
-      this.throwableObjects.forEach((bottle, j) => {
-        if (bottle.isColliding(enemy)) {
-        this.level.enemies.splice(index , 1)
-        this.throwableObjects.splice(j , 1)        
-        }
-      });
-    });
   }
 
   draw(){
