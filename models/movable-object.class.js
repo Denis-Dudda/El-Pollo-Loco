@@ -11,7 +11,7 @@ class MovableObject extends DrawableObject{
   coinEnergy = 0;
   bottleEnergy = 0;
   lastHit = 0;
-
+  
 
   applyGravity(){
     setInterval(() => {
@@ -19,7 +19,7 @@ class MovableObject extends DrawableObject{
         this.y -= this.speedY;
         this.speedY -= this.acceleration;        
       }
-
+      
     }, 1000 / 25);
   }
 

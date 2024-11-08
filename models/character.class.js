@@ -64,13 +64,13 @@ class Character extends MovableObject {
     // animation für die seiten bewegung 
     setInterval(() => {
       this.waking_sound.pause();
-      if (this.world,keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+      if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.moveRight();
         this.otherDirection = false;
         this.waking_sound.play(); 
       }
 
-      if (this.world,keyboard.LEFT && this.x > -600) {
+      if (this.world.keyboard.LEFT && this.x > -600) {
         this.moveLeft();
         this.otherDirection = true;
         this.waking_sound.play();  

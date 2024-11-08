@@ -11,6 +11,7 @@ class World {
   bottleBar = new BottleBar();
   throwableObjects = [];
   bottleCount = 0;
+  throwLeft = false;
 
   constructor(canvas, keyboard){
     this.ctx = canvas.getContext('2d');
@@ -48,6 +49,12 @@ class World {
     }
 
   checkThrwoObjects(){
+    if (this.keyboard.LEFT) {
+      this.throwLeft = true;
+    }
+    if (this.keyboard.RIGHT) {
+      this.throwLeft = false;
+    }
     if (this.keyboard.D && this.bottleCount > 0) {
       let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
       this.throwableObjects.push(bottle);

@@ -35,7 +35,12 @@ class ThrowableObject extends MovableObject {
       this.speedY = 30;
       this.applyGravity();
       setInterval(() => {
+        console.log(this.world.throwLeft);
+        if (this.world.throwLeft) {
+          this.x -= 10;
+        }else{
         this.x += 10;
+        }
        if (this.y > 350) {
           this.playAnimation(this.IMAGES_SPLASH);
           this.x -= 10;
