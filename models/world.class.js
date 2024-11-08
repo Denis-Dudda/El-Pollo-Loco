@@ -19,7 +19,6 @@ class World {
     this.draw();
     this.setWorld();
     this.run();
-    this.characterCollision();
   }
 
   setWorld() {
@@ -33,18 +32,19 @@ class World {
       this.checkBottleCollision();
       this.checkThrwoObjects();
       this.checkJumpOn();         // intervalle muss noch angepasst werden und funktionen trennen mit mehr intervallen !!!!!!!!!!!!!!!!!!!!!!!!!
-    }, 100);                          // intervalle muss noch angepasst werden und funktionen trennen mit mehr intervallen !!!!!!!!!!!!!!!!!!!!!!!!!
+    }, 100);
+    setInterval(() => {
+      this.characterCollision();
+    }, 800);                          // intervalle muss noch angepasst werden und funktionen trennen mit mehr intervallen !!!!!!!!!!!!!!!!!!!!!!!!!
   }
 
     characterCollision(){
-      setInterval(() => {
         this.level.enemies.forEach((enemy) => {
           if (this.character.isColliding(enemy)){
             this.character.hit();
             this.statusBar.setPercentage(this.character.energy);
           }
         });
-      }, 800);
     }
 
   checkThrwoObjects(){
@@ -103,7 +103,8 @@ class World {
     if (this.character.isAboveGround()) {
       this.level.enemies.forEach((enemy, i) => {
         if (this.character.jumpOnEnemy(enemy)){
-          this.level.enemies.splice(i , 1)       
+          this.level.enemies.splice(i , 1);
+          this.character.jump();       
         }
       });      
     }
