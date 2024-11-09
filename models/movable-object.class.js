@@ -12,6 +12,7 @@ class MovableObject extends DrawableObject{
   bottleEnergy = 0;
   lastHit = 0;
   
+  
 
   applyGravity(){
     setInterval(() => {

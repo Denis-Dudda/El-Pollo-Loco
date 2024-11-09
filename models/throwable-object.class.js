@@ -35,7 +35,7 @@ class ThrowableObject extends MovableObject {
       this.speedY = 30;
       this.applyGravity();
       setInterval(() => {
-        console.log(this.world.throwLeft);
+         
         if (this.world.throwLeft) {
           this.x -= 10;
         }else{
@@ -47,8 +47,7 @@ class ThrowableObject extends MovableObject {
         }
         else {
           this.playAnimation(this.IMAGES_BOTTLETHROW);
-        }
-        
+        }        
      }, 40);
     }
 

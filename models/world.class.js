@@ -1,6 +1,7 @@
 class World {
 
   character = new Character();
+  endBoss = new EndBoss();
   level = level1;
   canvas;
   ctx;
@@ -76,7 +77,13 @@ class World {
     this.level.enemies.forEach((enemy, index) => {    // wurf kollision
       this.throwableObjects.forEach((bottle, j) => {
         if (bottle.isColliding(enemy)) {
-        this.level.enemies.splice(index , 1)
+          this.character.hit();
+          this.endBoss.hit();
+            this.statusBar.setPercentage(this.character.energy);
+          setTimeout(() => {
+            this.level.enemies.splice(index , 1)
+          }, 1000);
+            
         this.throwableObjects.splice(j , 1)        
         }
       });
@@ -110,7 +117,7 @@ class World {
     if (this.character.isAboveGround()) {
       this.level.enemies.forEach((enemy, i) => {
         if (this.character.jumpOnEnemy(enemy)){
-          this.level.enemies.splice(i , 1);
+            this.level.enemies.splice(i , 1);  
           this.character.jump();       
         }
       });      

@@ -1,5 +1,5 @@
 class EndBoss extends MovableObject {
-
+  
   height = 400;
   width = 250;
   y = 55;
@@ -16,9 +16,16 @@ class EndBoss extends MovableObject {
 
   ];
 
+  IMAGES_HURT = [
+    'img/4_enemie_boss_chicken/4_hurt/G21.png',
+    'img/4_enemie_boss_chicken/4_hurt/G22.png',
+    'img/4_enemie_boss_chicken/4_hurt/G23.png',
+  ];
+
   constructor(){
     super().loadImage('img/4_enemie_boss_chicken/2_alert/G5.png')
     this.loadImages(this.IMAGES_WALKING);
+    this.loadImages(this.IMAGES_HURT);
     this.x = 700;
     this.animate();
   }
@@ -26,8 +33,13 @@ class EndBoss extends MovableObject {
   animate() {
     this.moveLeft();
     setInterval(() => {
+      if (this.isHurt()) {
+        this.playAnimation(this.IMAGES_HURT);
+      }else{
       this.playAnimation(this.IMAGES_WALKING);
+      }
     }, 200);
+  
   }
 
 
