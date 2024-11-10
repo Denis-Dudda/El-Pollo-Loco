@@ -1,7 +1,7 @@
 class World {
 
   character = new Character();
-  endBoss = new EndBoss();
+  endBoss = new EndBoss(this);
   level = level1;
   canvas;
   ctx;
@@ -13,6 +13,7 @@ class World {
   throwableObjects = [];
   bottleCount = 0;
   throwLeft = false;
+  
 
   constructor(canvas, keyboard){
     this.ctx = canvas.getContext('2d');
@@ -25,6 +26,7 @@ class World {
 
   setWorld() {
     this.character.world = this;
+    this.endBoss.world = this;
   }
 
   run(){
@@ -77,12 +79,8 @@ class World {
     this.level.enemies.forEach((enemy, index) => {    // wurf kollision
       this.throwableObjects.forEach((bottle, j) => {
         if (bottle.isColliding(enemy)) {
-          this.character.hit();
-          this.endBoss.hit();
-            this.statusBar.setPercentage(this.character.energy);
-          setTimeout(() => {
-            this.level.enemies.splice(index , 1)
-          }, 1000);
+          enemy.hit();
+
             
         this.throwableObjects.splice(j , 1)        
         }
