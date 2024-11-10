@@ -80,8 +80,12 @@ class World {
       this.throwableObjects.forEach((bottle, j) => {
         if (bottle.isColliding(enemy)) {
           enemy.hit();
-          if (enemy.type == 'endboss') {
-           // this.level.enemies.splice(index , 1);    //  muss noch splice rein 
+          if (enemy.type == 'endboss' && enemy.energy == 0) {
+            setTimeout(() => {
+             // this.clearAllIntervals();                        // spiel beenden
+            }, 1000);
+             
+            
           }
           if (enemy.type == 'chicken') {
             setTimeout(() => {
@@ -121,12 +125,16 @@ class World {
     if (this.character.isAboveGround()) {
       this.level.enemies.forEach((enemy, i) => {
         if (this.character.jumpOnEnemy(enemy)){
-          enemy.hit();
-          setTimeout(() => {
-            this.level.enemies.splice(i , 1);
-          }, 300);
+          if (enemy.type == 'chicken') {
+            enemy.hit();
+            setTimeout(() => {
+              this.level.enemies.splice(i , 1);
+            }, 300);
+            this.character.jump(); 
+          }
+
               
-          this.character.jump();       
+                
         }
       });      
     }
