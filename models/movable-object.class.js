@@ -42,7 +42,7 @@ class MovableObject extends DrawableObject{
   }
 
   jumpOnEnemy(mo) {
-    let xTolerance = 10; // Toleranz in Pixeln für die horizontale Kollision
+    let xTolerance = 0; // Toleranz in Pixeln für die horizontale Kollision
     let yTolerance = 80; // Toleranz in Pixeln für die vertikale Kollision
 
     return (
