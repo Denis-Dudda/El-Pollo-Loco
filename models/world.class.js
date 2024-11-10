@@ -80,8 +80,14 @@ class World {
       this.throwableObjects.forEach((bottle, j) => {
         if (bottle.isColliding(enemy)) {
           enemy.hit();
-                                              // muss noch raus splice
-            
+          if (enemy.type == 'endboss') {
+           // this.level.enemies.splice(index , 1);    //  muss noch splice rein 
+          }
+          if (enemy.type == 'chicken') {
+            setTimeout(() => {
+              this.level.enemies.splice(index , 1);   
+            }, 200); 
+          }    
         this.throwableObjects.splice(j , 1)        
         }
       });
