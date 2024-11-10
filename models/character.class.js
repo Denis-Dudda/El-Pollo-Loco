@@ -40,6 +40,19 @@ class Character extends MovableObject {
     'img/2_character_pepe/4_hurt/H-42.png',
     'img/2_character_pepe/4_hurt/H-43.png',
   ];
+
+  IMAGES_STAY = [
+    'img/2_character_pepe/1_idle/idle/I-1.png',
+    'img/2_character_pepe/1_idle/idle/I-2.png',
+    'img/2_character_pepe/1_idle/idle/I-3.png',
+    'img/2_character_pepe/1_idle/idle/I-4.png',
+    'img/2_character_pepe/1_idle/idle/I-5.png',
+    'img/2_character_pepe/1_idle/idle/I-6.png',
+    'img/2_character_pepe/1_idle/idle/I-7.png',
+    'img/2_character_pepe/1_idle/idle/I-8.png',
+    'img/2_character_pepe/1_idle/idle/I-9.png',
+    'img/2_character_pepe/1_idle/idle/I-10.png',
+  ]
   
   
   
@@ -54,6 +67,7 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_JUMPING);
     this.loadImages(this.IMAGES_DEAD);
     this.loadImages(this.IMAGES_HURT);
+    this.loadImages(this.IMAGES_STAY);
     this.applyGravity();
     this.animate();
   }
@@ -64,6 +78,8 @@ class Character extends MovableObject {
     // animation für die seiten bewegung 
     setInterval(() => {
       this.waking_sound.pause();
+
+      
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.moveRight();
         this.otherDirection = false;
@@ -96,11 +112,14 @@ class Character extends MovableObject {
       } else
       if (this.isAboveGround()) {
         this.playAnimation(this.IMAGES_JUMPING);
-      }else{
+      }else
       if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
         this.playAnimation(this.IMAGES_WALKING);
+      }else
+      {this.playAnimation(this.IMAGES_STAY);
+        
       }
-    }
+    
     }, 150);
   }
 
