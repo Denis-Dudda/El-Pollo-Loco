@@ -4,7 +4,9 @@ class EndBoss extends MovableObject {
   width = 250;
   y = 55;
   world;
-  status = 'normal';
+  type = 'endboss';
+  test = false;
+  energy = 60;
   IMAGES_WALKING = [
     'img/4_enemie_boss_chicken/2_alert/G5.png',
     'img/4_enemie_boss_chicken/2_alert/G6.png',
@@ -23,10 +25,17 @@ class EndBoss extends MovableObject {
     'img/4_enemie_boss_chicken/4_hurt/G23.png',
   ];
 
+  IMAGES_DEAD = [
+    'img/4_enemie_boss_chicken/5_dead/G24.png',
+    'img/4_enemie_boss_chicken/5_dead/G25.png',
+    'img/4_enemie_boss_chicken/5_dead/G26.png',
+  ]
+
   constructor(world){
     super().loadImage('img/4_enemie_boss_chicken/2_alert/G5.png')
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_HURT);
+    this.loadImages(this.IMAGES_DEAD);
     this.x = 700;
     this.animate();
     this.world = world;
@@ -37,12 +46,16 @@ class EndBoss extends MovableObject {
   animate() {
     this.moveLeft();
     setInterval(() => {
-      if (this.isHurt()) {                    //////////// funzt noch nicht weil hurt nicht auf true geht läd aber bilder usw.
+        
+        
+      if (this.isDead()) {
+        this.playAnimation(this.IMAGES_DEAD);
+      }else{this.playAnimation(this.IMAGES_WALKING);}
+      if (this.isHurt()) {                    
         this.playAnimation(this.IMAGES_HURT);
         
-      }else{
-      this.playAnimation(this.IMAGES_WALKING);
       }
+
     }, 450);
   
   }

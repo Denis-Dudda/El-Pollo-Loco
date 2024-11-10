@@ -80,7 +80,7 @@ class World {
       this.throwableObjects.forEach((bottle, j) => {
         if (bottle.isColliding(enemy)) {
           enemy.hit();
-
+                                              // muss noch raus splice
             
         this.throwableObjects.splice(j , 1)        
         }
