@@ -115,7 +115,11 @@ class World {
     if (this.character.isAboveGround()) {
       this.level.enemies.forEach((enemy, i) => {
         if (this.character.jumpOnEnemy(enemy)){
-            this.level.enemies.splice(i , 1);  
+          enemy.hit();
+          setTimeout(() => {
+            this.level.enemies.splice(i , 1);
+          }, 300);
+              
           this.character.jump();       
         }
       });      
