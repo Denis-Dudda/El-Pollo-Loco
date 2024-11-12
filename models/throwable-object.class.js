@@ -34,11 +34,20 @@ class ThrowableObject extends MovableObject {
   throw(){   
       this.speedY = 30;
       this.applyGravity();
+      if (this.world.character.otherDirection){
+        setInterval(() => {
+          this.x -= 10;
+        }, 40);
+      }else{
+        setInterval(() => {
+          this.x += 10;
+        }, 40);
+      }
       setInterval(() => {
         if (this.world.character.otherDirection) {
-          this.x -= 10;
-        }else{
-        this.x += 10;
+           
+         }else{
+           
         }
        if (this.y > 350) {
           this.playAnimation(this.IMAGES_SPLASH);
