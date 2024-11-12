@@ -44,12 +44,11 @@ class ThrowableObject extends MovableObject {
         }, 40);
       }
       setInterval(() => {
-        if (this.world.character.otherDirection) {
-           
-         }else{
-           
-        }
-       if (this.y > 350) {
+        if (this.world.character.otherDirection && this.y > 350) {
+          this.playAnimation(this.IMAGES_SPLASH);
+          this.x += 10;
+        }else
+        if (!this.world.character.otherDirection && this.y > 350) {
           this.playAnimation(this.IMAGES_SPLASH);
           this.x -= 10;
         }
