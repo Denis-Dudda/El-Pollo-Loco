@@ -90,7 +90,8 @@ class Character extends MovableObject {
     // animation für die seiten bewegung 
     setInterval(() => {
       this.waking_sound.pause();
-
+      console.log(this.otherDirection);
+      
       
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.moveRight();
