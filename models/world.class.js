@@ -87,7 +87,7 @@ class World {
              
             
           }
-          if (enemy.type == 'chicken') {
+          if (enemy.type == 'chicken' || enemy.type == 'small-chicken') {
             setTimeout(() => {
               this.level.enemies.splice(index , 1);   
             }, 200); 
@@ -125,7 +125,7 @@ class World {
     if (this.character.isAboveGround()) {
       this.level.enemies.forEach((enemy, i) => {
         if (this.character.jumpOnEnemy(enemy)){
-          if (enemy.type == 'chicken') {
+          if (enemy.type == 'chicken' || enemy.type == 'small-chicken') {
             enemy.hit();
             setTimeout(() => {
               this.level.enemies.splice(i , 1);
