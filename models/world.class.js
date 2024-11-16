@@ -13,10 +13,10 @@ class World {
   throwableObjects = [];
   bottleCount = 0;
   bottleCoolDown = true;
-  winImage = new Image();
-  showWinImage = false;
-  loseImage = new Image ();
-  showLoseImage = false;
+  winImage = new Image();     // win img
+  showWinImage = false;       // win img
+  loseImage = new Image ();   // lose img
+  showLoseImage = false;      // lose img
 
   constructor(canvas, keyboard){
     this.winImage.src = 'img/9_intro_outro_screens/win/win_2.png';
@@ -84,7 +84,7 @@ class World {
           enemy.hit();
           if (enemy.type == 'endboss' && enemy.energy == 0) {
             setTimeout(() => {
-              this.showWinImage = true;
+              this.showWinImage = true;    // win img
              // this.clearAllIntervals();                        // spiel beenden
             }, 1000);
             
@@ -160,10 +160,10 @@ class World {
     this.addObjectsToMap(this.throwableObjects); 
     this.ctx.translate(-this.camera_x, 0); // verschiebt das bild dann wieder zurück so das die camera am character bleibt 
     if (this.showWinImage) {
-      this.ctx.drawImage(this.winImage, 0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.drawImage(this.winImage, 0, 0, this.canvas.width, this.canvas.height);    // win img
     }
     if (this.character.showLoseImage) {
-      this.ctx.drawImage(this.loseImage, 0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.drawImage(this.loseImage, 0, 0, this.canvas.width, this.canvas.height);  // lose img
     }
     // draw wird immer wieder aufgerufen
     let self = this;

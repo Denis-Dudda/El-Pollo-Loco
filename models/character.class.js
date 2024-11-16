@@ -4,7 +4,7 @@ class Character extends MovableObject {
   height = 250;
   width = 150;
   speed = 10;
-  showLoseImage = false;
+  showLoseImage = false;  // lose img
   IMAGES_WALKING = [
     'img/2_character_pepe/2_walk/W-21.png',
     'img/2_character_pepe/2_walk/W-22.png',
@@ -119,7 +119,7 @@ class Character extends MovableObject {
         this.playAnimation(this.IMAGES_DEAD); 
       //    setTimeout(() => {
       //    this.world.clearAllIntervals();
-      this.showLoseImage = true;
+      this.showLoseImage = true;  // lose img
       //  }, 100);
       
       
