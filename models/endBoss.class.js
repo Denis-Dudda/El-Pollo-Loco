@@ -42,14 +42,17 @@ class EndBoss extends MovableObject {
     
   }
 
+  
 
   animate() {
+    
     this.moveLeft();
     setInterval(() => {
-        
+      
         
       if (this.isDead()) {
         this.playAnimation(this.IMAGES_DEAD);
+        
       }else{this.playAnimation(this.IMAGES_WALKING);}
       if (this.isHurt()) {                    
         this.playAnimation(this.IMAGES_HURT);
