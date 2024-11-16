@@ -32,7 +32,8 @@ class EndBoss extends MovableObject {
   ]
 
   constructor(world){
-    super().loadImage('img/4_enemie_boss_chicken/2_alert/G5.png')
+    super().loadImage('img/4_enemie_boss_chicken/2_alert/G5.png');
+    this.setCollisionOffsets(30, 20, 20, 20);
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
