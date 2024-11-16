@@ -13,9 +13,11 @@ class World {
   throwableObjects = [];
   bottleCount = 0;
   bottleCoolDown = true;
-  
+  endImage = new Image();
+  showEndImage = false;
 
   constructor(canvas, keyboard){
+    this.endImage.src = 'img/9_intro_outro_screens/game_over/game over.png';
     this.ctx = canvas.getContext('2d');
     this.canvas = canvas;
     this.keyboard = keyboard;
@@ -79,9 +81,9 @@ class World {
           enemy.hit();
           if (enemy.type == 'endboss' && enemy.energy == 0) {
             setTimeout(() => {
-             // this.clearAllIntervals();                        // spiel beenden
+              this.showEndImage = true;
+              this.clearAllIntervals();                        // spiel beenden
             }, 1000);
-             
             
           }
           if (enemy.type == 'chicken' || enemy.type == 'small-chicken') {
@@ -153,7 +155,9 @@ class World {
     this.addObjectsToMap(this.level.enemies); 
     this.addObjectsToMap(this.throwableObjects); 
     this.ctx.translate(-this.camera_x, 0); // verschiebt das bild dann wieder zurück so das die camera am character bleibt 
-
+    if (this.showEndImage) {
+      this.ctx.drawImage(this.endImage, 0, 0, this.canvas.width, this.canvas.height);
+    }
     // draw wird immer wieder aufgerufen
     let self = this;
     requestAnimationFrame(function(){
