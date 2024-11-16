@@ -15,9 +15,12 @@ class World {
   bottleCoolDown = true;
   winImage = new Image();
   showWinImage = false;
+  loseImage = new Image ();
+  showLoseImage = false;
 
   constructor(canvas, keyboard){
     this.winImage.src = 'img/9_intro_outro_screens/win/win_2.png';
+    this.loseImage.src = 'img/9_intro_outro_screens/game_over/oh no you lost!.png';
     this.ctx = canvas.getContext('2d');
     this.canvas = canvas;
     this.keyboard = keyboard;
@@ -82,7 +85,7 @@ class World {
           if (enemy.type == 'endboss' && enemy.energy == 0) {
             setTimeout(() => {
               this.showWinImage = true;
-              this.clearAllIntervals();                        // spiel beenden
+             // this.clearAllIntervals();                        // spiel beenden
             }, 1000);
             
           }
@@ -121,6 +124,7 @@ class World {
   }
 
   checkJumpOn(){
+    
     if (this.character.isAboveGround()) {
       this.level.enemies.forEach((enemy, i) => {
         if (this.character.jumpOnEnemy(enemy)){
@@ -157,6 +161,9 @@ class World {
     this.ctx.translate(-this.camera_x, 0); // verschiebt das bild dann wieder zurück so das die camera am character bleibt 
     if (this.showWinImage) {
       this.ctx.drawImage(this.winImage, 0, 0, this.canvas.width, this.canvas.height);
+    }
+    if (this.character.showLoseImage) {
+      this.ctx.drawImage(this.loseImage, 0, 0, this.canvas.width, this.canvas.height);
     }
     // draw wird immer wieder aufgerufen
     let self = this;
