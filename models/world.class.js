@@ -12,7 +12,7 @@ class World {
   bottleBar = new BottleBar();
   throwableObjects = [];
   bottleCount = 0;
-  
+  bottleCoolDown = true;
   
 
   constructor(canvas, keyboard){
@@ -52,14 +52,18 @@ class World {
     }
 
   checkThrwoObjects(){
-    if (this.keyboard.D && this.bottleCount > 0) {
+    console.log(this.bottleCoolDown);
+    if (this.keyboard.D && this.bottleCount > 0 && this.bottleCoolDown) {
       let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
       this.throwableObjects.push(bottle);
       this.bottleCount--;// minus für jeden wurf
       this.removeBottle();
       this.character.bottleEnergy = this.character.bottleEnergy - 20;
       this.bottleBar.setPercentage(this.character.bottleEnergy);
-      console.log(this.character.bottleEnergy);
+      this.bottleCoolDown = false;
+      setTimeout(() => {
+        this.bottleCoolDown = true;
+      }, 1500);  
     }
   }
 
