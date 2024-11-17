@@ -22,9 +22,20 @@ h1 {
   font-size: 40px;
 }
 
-.aktion-buttons{
+.aktion-buttons {
+  width: 720px;
   display: flex;
+  justify-content: space-between;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: -41px;
+}
 
+.aktion-buttons-container{
+  display: flex;
+  gap: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 button {
@@ -54,6 +65,9 @@ button:active {
 
 @media only screen and (max-width: 720px) {
   canvas{
+    width: 100%;
+  }
+  .aktion-buttons{
     width: 100%;
   }
 }
