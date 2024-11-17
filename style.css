@@ -26,8 +26,6 @@ h1 {
   width: 720px;
   display: flex;
   justify-content: space-between;
-  padding-left: 16px;
-  padding-right: 16px;
   margin-top: -36px;
 }
 
