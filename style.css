@@ -28,7 +28,7 @@ h1 {
   justify-content: space-between;
   padding-left: 16px;
   padding-right: 16px;
-  margin-top: -41px;
+  margin-top: -36px;
 }
 
 .aktion-buttons-container{
@@ -39,29 +39,33 @@ h1 {
 }
 
 button {
-  padding: 6px 26px;
-  border-radius: 10px;
-  border: 0;
-  background-color: rgb(255, 56, 86);
-  letter-spacing: 1.5px;
-  font-size: 15px;
-  transition: all 0.3s ease;
-  box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
-  color: hsl(0, 0%, 100%);
+  background-color: #eee;
+  border: none;
+  padding: 5px;
+  font-size: 16px;
+  width: 60px;
+  border-radius: 1rem;
+  color: lightcoral;
+  box-shadow: 0 0.4rem #dfd9d9;
   cursor: pointer;
-}
-
-button:hover {
-  box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
-}
-
-button:active {
-  background-color: rgb(255, 56, 86);
-  /*50, 168, 80*/
-  box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
-  transform: translateY(5px);
-  transition: 200ms;
-}
+ }
+ 
+ button:active {
+  color: white;
+  box-shadow: 0 0.2rem #dfd9d9;
+  transform: translateY(0.2rem);
+ }
+ 
+ button:hover:not(:disabled) {
+  background: lightcoral;
+  color: white;
+  text-shadow: 0 0.1rem #bcb4b4;
+ }
+ 
+ button:disabled {
+  cursor: auto;
+  color: grey;
+ }
 
 @media only screen and (max-width: 720px) {
   canvas{
@@ -80,4 +84,6 @@ button:active {
     display: none;
   }
 }
+
+
 
