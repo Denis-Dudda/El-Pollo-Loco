@@ -63,10 +63,13 @@ window.addEventListener('keyup', (e) => {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-  // Sicherstellen, dass das Element mit der ID btn-left verfügbar ist
+  // Buttons holen
   const btnLeft = document.getElementById('btn-left');
+  const btnRight = document.getElementById('btn-right');
+  const btnD = document.getElementById('btn-d');
+  const btnSpace = document.getElementById('btn-space');
 
-  // Event Listener für Desktop (Maus)
+  // Event Listener für "left" Button
   btnLeft.addEventListener('mousedown', () => {
     keyboard.LEFT = true;  // Taste gedrückt
   });
@@ -75,14 +78,8 @@ document.addEventListener("DOMContentLoaded", function() {
     keyboard.LEFT = false;  // Taste losgelassen
   });
 
-  // Optional: Wenn der Mauszeiger das Element verlässt
-  btnLeft.addEventListener('mouseleave', () => {
-    keyboard.LEFT = false;  // Taste losgelassen
-  });
-
-  // Event Listener für mobile Geräte (Touch)
   btnLeft.addEventListener('touchstart', (e) => {
-    e.preventDefault();  // Verhindert, dass der Browser das Touch-Event zusätzlich verarbeitet
+    e.preventDefault();  // Verhindert den Standardverhalten
     keyboard.LEFT = true;  // Taste gedrückt
   });
 
@@ -91,10 +88,61 @@ document.addEventListener("DOMContentLoaded", function() {
     keyboard.LEFT = false;  // Taste losgelassen
   });
 
-  // Optional: Wenn der Touch den Button verlässt
-  btnLeft.addEventListener('touchcancel', (e) => {
+  // Event Listener für "right" Button
+  btnRight.addEventListener('mousedown', () => {
+    keyboard.RIGHT = true;  // Taste gedrückt
+  });
+
+  btnRight.addEventListener('mouseup', () => {
+    keyboard.RIGHT = false;  // Taste losgelassen
+  });
+
+  btnRight.addEventListener('touchstart', (e) => {
     e.preventDefault();
-    keyboard.LEFT = false;  // Taste losgelassen
+    keyboard.RIGHT = true;  // Taste gedrückt
+  });
+
+  btnRight.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keyboard.RIGHT = false;  // Taste losgelassen
+  });
+
+  // Event Listener für "D" Button
+  btnD.addEventListener('mousedown', () => {
+    keyboard.D = true;  // Taste gedrückt
+  });
+
+  btnD.addEventListener('mouseup', () => {
+    keyboard.D = false;  // Taste losgelassen
+  });
+
+  btnD.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    keyboard.D = true;  // Taste gedrückt
+  });
+
+  btnD.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keyboard.D = false;  // Taste losgelassen
+  });
+
+  // Event Listener für "Space" Button
+  btnSpace.addEventListener('mousedown', () => {
+    keyboard.SPACE = true;  // Taste gedrückt
+  });
+
+  btnSpace.addEventListener('mouseup', () => {
+    keyboard.SPACE = false;  // Taste losgelassen
+  });
+
+  btnSpace.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    keyboard.SPACE = true;  // Taste gedrückt
+  });
+
+  btnSpace.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    keyboard.SPACE = false;  // Taste losgelassen
   });
 });
 
