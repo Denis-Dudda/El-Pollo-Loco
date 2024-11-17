@@ -22,62 +22,34 @@ h1 {
   font-size: 40px;
 }
 
-.container {
+.aktion-buttons{
   display: flex;
-  gap: 32px;
-  align-items: center;
-  justify-content: center;
-}
-.container label {
-  cursor: pointer;
-  position: relative;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-label input {
-  appearance: none;
-}
-label span {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(#555353, #363535, #303030);
-  border: 2px solid #222;
-  border-top-width: 4px;
-  border-radius: 6px;
-  box-shadow: inset 0 5px 1px rgba(0, 0, 0, 0.23), 0 5px 5px rgba(0, 0, 0, 0.5),
-    0 15px 25px rgba(0, 0, 0, 0.35);
-}
-.container label span::before {
-  content: "";
-  position: absolute;
-  border-top: 1px solid #fff;
-  inset: 5px 3px;
-  filter: blur(5px);
-}
-label:active span {
-  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.35),
-    inset 0 5px 5px rgba(0, 0, 0, 0.5), inset 0 15px 25px rgba(0, 0, 0, 0.35);
-}
-label p {
-  position: relative;
-  z-index: 10;
-  font-size: 3rem;
-  color: #111;
-}
-label:active p {
-  color: #fff;
-  text-shadow: 0 0 5px #219cf3, 0 0 8px #219cf3;
+
 }
 
-.no-select, 
-.no-select * {
-  user-select: none;
-  -webkit-user-select: none; /* Für Safari */
-  -ms-user-select: none; /* Für ältere IE-Versionen */
+button {
+  padding: 6px 26px;
+  border-radius: 10px;
+  border: 0;
+  background-color: rgb(255, 56, 86);
+  letter-spacing: 1.5px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
+}
+
+button:active {
+  background-color: rgb(255, 56, 86);
+  /*50, 168, 80*/
+  box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
+  transform: translateY(5px);
+  transition: 200ms;
 }
 
 @media only screen and (max-width: 720px) {
