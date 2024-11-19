@@ -5,8 +5,12 @@ let keyboard = new Keyboard();
 function init() {
   canvas = document.getElementById('canvas');
   world = new World(canvas, keyboard);
+}
 
-  console.log('my character is', world.character);
+function pauseGame() {                // stop all interval if push pause button
+  {
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
+  }
 }
 
 // Tastatursteuerung
