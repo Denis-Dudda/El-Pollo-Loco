@@ -22,6 +22,15 @@ h1 {
   font-size: 40px;
 }
 
+.menu-buttons {
+  display: flex;
+  justify-content: end;
+  width: 720px;
+  gap: 8px;
+  margin-bottom: -30px;
+  z-index: 1;
+}
+
 .aktion-buttons {
   width: 720px;
   display: flex;
