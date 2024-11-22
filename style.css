@@ -34,10 +34,11 @@ h1 {
 
 .menu-buttons {
   display: flex;
-  justify-content: end;
+  justify-content: center;
+  align-items: center;
   width: 720px;
-  gap: 8px;
-  margin-bottom: -30px;
+  height: 460px;
+  gap: 26px;
   z-index: 99;
 }
 
