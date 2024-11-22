@@ -7,7 +7,10 @@ function init() {
   world = new World(canvas, keyboard);
 }
 
-
+function startGame() {
+  document.getElementById('start-screen').classList.add('d-none');
+  document.getElementById('aktion-buttons').classList.remove('d-none');
+}
 
 // Tastatursteuerung
 window.addEventListener('keydown', (e) => {
@@ -145,5 +148,6 @@ document.addEventListener("DOMContentLoaded", function() {
     keyboard.SPACE = false;  // Taste losgelassen
   });
 });
+
 
 

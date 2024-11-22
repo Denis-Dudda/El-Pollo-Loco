@@ -30,14 +30,17 @@
   <script src="js/game.js"></script>
 </head>
 <body onload="init()">
-  <h1>El Pollo Loco</h1>
+  <!--<h1>El Pollo Loco</h1>-->
   <div class="menu-buttons">
-    <button id="btn-start">Start</button>
+    <button onclick="startGame()" id="btn-start">Start</button>
     <button id="btn-Pause">Stop</button>
     <button id="btn-Home">Home</button>
   </div>
+  <div id="start-screen" class="start-screen-container">
+    
+  </div>
   <canvas id="canvas" width="720" height="480"></canvas>
-  <section class="aktion-buttons">
+  <section id="aktion-buttons" class="aktion-buttons d-none">
     <div class="aktion-buttons-container">
       <button id="btn-left">left</button>
       <button id="btn-right">right</button>
@@ -46,6 +49,6 @@
       <button id="btn-d">D</button>
       <button id="btn-space">Space</button>
     </div>
-    </section>
+  </section>
 </body>
 </html>
