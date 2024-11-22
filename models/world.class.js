@@ -37,15 +37,23 @@ class World {
   run(){
     setInterval(() => {
       this.checkCollisions();
+    }, 200);
+    setInterval(() => {
       this.checkCoinCollision();
+    }, 100);
+    setInterval(() => {
       this.checkBottleCollision();
+    }, 100);
+    setInterval(() => {
       this.checkThrwoObjects();
-      this.checkJumpOn();         // intervalle muss noch angepasst werden und funktionen trennen mit mehr intervallen !!!!!!!!!!!!!!!!!!!!!!!!!
+    }, 100);
+    setInterval(() => {
+      this.checkJumpOn();         
     }, 100);
     setInterval(() => {
       this.characterCollision();
-    }, 800);                          // intervalle muss noch angepasst werden und funktionen trennen mit mehr intervallen !!!!!!!!!!!!!!!!!!!!!!!!!
-  }
+    }, 800);                          
+  };
 
     characterCollision(){
         this.level.enemies.forEach((enemy) => {
@@ -85,9 +93,8 @@ class World {
           if (enemy.type == 'endboss' && enemy.energy == 0) {
             setTimeout(() => {
               this.showWinImage = true;    // win img
-             // this.clearAllIntervals();                        // spiel beenden
-            }, 1000);
-            
+              this.clearAllIntervals();                        // spiel beenden
+            }, 1300); 
           }
           if (enemy.type == 'chicken' || enemy.type == 'small-chicken') {
             setTimeout(() => {
@@ -204,5 +211,7 @@ class World {
     this.ctx.restore();
   }
 
-
+  clearAllIntervals() {
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
+  }
 }
