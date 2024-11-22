@@ -7,11 +7,7 @@ function init() {
   world = new World(canvas, keyboard);
 }
 
-function pauseGame() {                // stop all interval if push pause button
-  {
-    for (let i = 1; i < 9999; i++) window.clearInterval(i);
-  }
-}
+
 
 // Tastatursteuerung
 window.addEventListener('keydown', (e) => {

@@ -204,8 +204,5 @@ class World {
     this.ctx.restore();
   }
 
-  clearAllIntervals() {
-    for (let i = 1; i < 9999; i++) window.clearInterval(i);
-  }
 
 }
