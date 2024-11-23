@@ -7,7 +7,16 @@ class EndBoss extends MovableObject {
   type = 'endboss';
   test = false;
   energy = 60;
+  bossAttack = false;
+
   IMAGES_WALKING = [
+    'img/4_enemie_boss_chicken/1_walk/G1.png',
+    'img/4_enemie_boss_chicken/1_walk/G2.png',
+    'img/4_enemie_boss_chicken/1_walk/G3.png',
+    'img/4_enemie_boss_chicken/1_walk/G4.png',
+  ]
+
+  IMAGES_ALERT = [
     'img/4_enemie_boss_chicken/2_alert/G5.png',
     'img/4_enemie_boss_chicken/2_alert/G6.png',
     'img/4_enemie_boss_chicken/2_alert/G7.png',
@@ -34,9 +43,10 @@ class EndBoss extends MovableObject {
   constructor(world){
     super().loadImage('img/4_enemie_boss_chicken/2_alert/G5.png');
     this.setCollisionOffsets(30, 20, 20, 20);
-    this.loadImages(this.IMAGES_WALKING);
+    this.loadImages(this.IMAGES_ALERT);
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
+    this.loadImages(this.IMAGES_WALKING);
     this.x = 2700;
     this.animate();
     this.world = world;
@@ -46,24 +56,28 @@ class EndBoss extends MovableObject {
   
 
   animate() {
-    
-    this.moveLeft();
-    setInterval(() => {
-      
-        
-      if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD);
-        
-      }else{this.playAnimation(this.IMAGES_WALKING);}
-      if (this.isHurt()) {                    
-        this.playAnimation(this.IMAGES_HURT);
-        
+     
+      setInterval(() => {
+        if (this.bossAttack){
+        this.moveLeft();
       }
+      },100);      
+    
 
-    }, 450);
-  
-  }
-
+    
+      setInterval(() => {
+        if (this.isDead()) {
+          this.playAnimation(this.IMAGES_DEAD); // Höchste Priorität: Boss ist tot
+        } else if (this.isHurt()) {
+          this.playAnimation(this.IMAGES_HURT); // Zweithöchste Priorität: Boss ist verwundet
+          this.bossAttack = true; // Wechsel in Angriffsmodus
+        } else if (this.bossAttack) {
+          this.playAnimation(this.IMAGES_WALKING); // Dritthöchste Priorität: Boss greift an
+        } else {
+          this.playAnimation(this.IMAGES_ALERT); // Standardzustand: Alert
+        }
+      }, 450);
+    }
 
 
 
