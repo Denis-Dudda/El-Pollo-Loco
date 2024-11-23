@@ -3,8 +3,10 @@ let world;
 let keyboard = new Keyboard();
 
 function init() {
+  newLevel();
   canvas = document.getElementById('canvas');
   world = new World(canvas, keyboard);
+  
 }
 
 function startGame() {
