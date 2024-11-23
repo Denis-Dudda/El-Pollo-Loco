@@ -10,6 +10,17 @@ function init() {
 function startGame() {
   document.getElementById('start-screen').classList.add('d-none');
   document.getElementById('aktion-buttons').classList.remove('d-none');
+  init();
+}
+
+function restartGame() {
+  clearAllIntervals();
+  world = null; // Lösche die alte Instanz
+  init();       // Erstelle eine neue Instanz
+}
+
+function clearAllIntervals() {
+  for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }
 
 // Tastatursteuerung

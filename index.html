@@ -29,13 +29,13 @@
   <script src="levels/level1.js"></script>
   <script src="js/game.js"></script>
 </head>
-<body onload="init()">
+<body>
   <!--<h1>El Pollo Loco</h1>-->
 
   <div id="start-screen" class="start-screen-container">
     <div class="menu-buttons">
       <button onclick="startGame()" id="btn-start">Start</button>
-      <button id="btn-Pause">Stop</button>
+      <button onclick="restartGame()" id="btn-Pause">restart</button>
       <button id="btn-Home">Home</button>
     </div>
   </div>
