@@ -10,9 +10,19 @@ function init() {
 }
 
 function startGame() {
-  document.getElementById('start-screen').classList.add('d-none');
-  document.getElementById('aktion-buttons').classList.remove('d-none');
+  hideScreen();
+  showButtons();
   init();
+}
+
+function hideScreen(){
+  document.getElementById('start-screen').classList.add('d-none');
+  document.getElementById('middle-btn').classList.add('d-none');
+}
+
+function showButtons() {
+  document.getElementById('top-btn').classList.remove('d-none');
+  document.getElementById('bottom-btn').classList.remove('d-none');
 }
 
 function restartGame() {

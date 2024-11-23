@@ -33,27 +33,27 @@
   <!--<h1>El Pollo Loco</h1>-->
 
   <div id="start-screen" class="start-screen-container">
-    <div class="menu-buttons">
-      <div class="top-menu">
-        <button onclick="restartGame()" id="btn-restart">restart</button>
+
+  </div>
+  <div class="menu-buttons">
+    <div id="top-btn" class="top-menu d-none">
+      <button onclick="restartGame()" id="btn-restart">restart</button>
+    </div>
+    <div id="middle-btn" class="middle-menu">
+      <button onclick="startGame()" id="btn-start">Start</button>
+      <button id="btn-info">Info</button>
+    </div>
+    <div id="bottom-btn" class="bottom-menu d-none">
+      <div class="left-buttons">
+        <button id="btn-left">left</button>
+        <button id="btn-right">right</button>
       </div>
-      <div class="middle-menu">
-        <button onclick="startGame()" id="btn-start">Start</button>
-        <button id="btn-info">Info</button>
-      </div>
-      <div class="bottom-menu">
-        <div class="left-buttons">
-          <button id="btn-left">left</button>
-          <button id="btn-right">right</button>
-        </div>
-        <div class="right-buttons">
-          <button id="btn-d">D</button>
-          <button id="btn-space">Space</button>
-        </div>
+      <div class="right-buttons">
+        <button id="btn-d">D</button>
+        <button id="btn-space">Space</button>
       </div>
     </div>
   </div>
-  
     
   
   
