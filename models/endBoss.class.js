@@ -59,7 +59,11 @@ class EndBoss extends MovableObject {
      
       setInterval(() => {
         if (this.bossAttack){
-        this.moveLeft();
+          this.speed = 9;
+          if (!this.isDead()) {
+            this.moveLeft();    
+          }
+        
       }
       },100);      
     
