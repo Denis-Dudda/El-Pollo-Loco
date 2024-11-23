@@ -117,10 +117,10 @@ class Character extends MovableObject {
     setInterval(() => {
       if (this.isDead()) {
         this.playAnimation(this.IMAGES_DEAD); 
-      //    setTimeout(() => {
-      //    this.world.clearAllIntervals();
+          setTimeout(() => {
+          this.world.clearAllIntervals();
       this.showLoseImage = true;  // lose img
-      //  }, 100);
+        }, 400);
       
       
       }else 
