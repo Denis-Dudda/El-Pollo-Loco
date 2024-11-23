@@ -32,28 +32,42 @@ h1 {
   font-size: 40px;
 }
 
-.menu-buttons {
+.menu-buttons{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   width: 720px;
-  height: 460px;
-  gap: 26px;
-  z-index: 99;
-}
-
-.aktion-buttons {
-  width: 720px;
-  display: flex;
+  height: 480px;
   justify-content: space-between;
-  margin-top: -36px;
+  align-items: center;
 }
 
-.aktion-buttons-container{
+.top-menu{
   display: flex;
-  gap: 8px;
-  margin-left: 8px;
-  margin-right: 8px;
+  justify-content: flex-end;
+  width: 720px;
+  padding-top: 8px;
+  padding-right: 8px;
+}
+
+.middle-menu{
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.bottom-menu {
+  display: flex;
+  width: 720px;
+  justify-content: space-between;
+}
+
+.left-buttons{
+  padding-left: 8px;
+  padding-bottom: 8px;
+}
+
+.right-buttons{
+  padding-right: 8px;
 }
 
 button {

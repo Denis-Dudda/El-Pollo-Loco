@@ -34,21 +34,34 @@
 
   <div id="start-screen" class="start-screen-container">
     <div class="menu-buttons">
-      <button onclick="startGame()" id="btn-start">Start</button>
-      <button onclick="restartGame()" id="btn-Pause">restart</button>
-      <button id="btn-Home">Home</button>
+      <div class="top-menu">
+        <button onclick="restartGame()" id="btn-restart">restart</button>
+      </div>
+      <div class="middle-menu">
+        <button onclick="startGame()" id="btn-start">Start</button>
+        <button id="btn-info">Info</button>
+      </div>
+      <div class="bottom-menu">
+        <div class="left-buttons">
+          <button id="btn-left">left</button>
+          <button id="btn-right">right</button>
+        </div>
+        <div class="right-buttons">
+          <button id="btn-d">D</button>
+          <button id="btn-space">Space</button>
+        </div>
+      </div>
     </div>
   </div>
+  
+    
+  
+  
   <canvas id="canvas" width="720" height="480"></canvas>
   <section id="aktion-buttons" class="aktion-buttons d-none">
-    <div class="aktion-buttons-container">
-      <button id="btn-left">left</button>
-      <button id="btn-right">right</button>
-    </div>
-    <div class="aktion-buttons-container">
-      <button id="btn-d">D</button>
-      <button id="btn-space">Space</button>
-    </div>
+    
+
+    
   </section>
 </body>
 </html>
