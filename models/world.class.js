@@ -49,7 +49,7 @@ class World {
     }, 100);
     setInterval(() => {
       this.checkJumpOn();         
-    }, 100);
+    }, 10);
     setInterval(() => {
       this.characterCollision();
     }, 800);                          
