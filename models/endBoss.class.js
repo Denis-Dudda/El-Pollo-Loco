@@ -6,8 +6,9 @@ class EndBoss extends MovableObject {
   world;
   type = 'endboss';
   test = false;
-  energy = 60;
+  energy = 100;
   bossAttack = false;
+  HP = 100;
 
   IMAGES_WALKING = [
     'img/4_enemie_boss_chicken/1_walk/G1.png',
@@ -70,6 +71,7 @@ class EndBoss extends MovableObject {
   animate() {
      
       setInterval(() => {
+        console.log(this.HP);
         if (this.bossAttack){
           this.speed = 9;
           if (!this.isDead()) {
@@ -101,8 +103,10 @@ class EndBoss extends MovableObject {
         this.healthbar.y = this.y;
       }, 60);
     }
+
     draw(ctx) {
       super.draw(ctx);
       this.healthbar.draw(ctx);
     }
+
 }

@@ -95,6 +95,11 @@ class World {
       this.throwableObjects.forEach((bottle, j) => {
         if (bottle.isColliding(enemy)) {
           enemy.hit();
+          if (enemy.type == 'endboss') {
+            this.endBoss.HP = this.endBoss.HP - 20;
+            enemy.healthbar.setPercentage(this.endBoss.HP);  
+          }
+          
           if (enemy.type == 'endboss' && enemy.energy == 0) {
             setTimeout(() => {
               this.showWinImage = true;    // win img
