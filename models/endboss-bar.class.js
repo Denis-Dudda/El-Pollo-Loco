@@ -15,8 +15,8 @@ class EndBossBar extends MovableObject {
   constructor() {
     super();
     this.loadImages(this.IMAGES)
-    this.x = 500;
-    this.y = 30;
+    this.x = 2720;
+    this.y = 50;
     this.width = 200;
     this.height = 60;
     this.setPercentage(100);

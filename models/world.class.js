@@ -161,11 +161,12 @@ class World {
     this.ctx.translate(this.camera_x, 0); // (on)zeichnet alle elemente 100 pixel weiter links, sorgt dafür das die camera beim character bleibt  
     this.addObjectsToMap(this.level.backgroundObjects);   
     this.addObjectsToMap(this.level.clouds);
+    this.addToMap(this.endBossBar);
     this.ctx.translate(-this.camera_x, 0); // (off)
     this.addToMap(this.statusBar);
     this.addToMap(this.coinBar);
     this.addToMap(this.bottleBar);
-    this.addToMap(this.endBossBar);
+  
     this.ctx.translate(this.camera_x, 0); // (on)
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.coins);
