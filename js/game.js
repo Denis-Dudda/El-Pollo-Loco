@@ -1,7 +1,7 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
-
+let allSoundsMute = true;
 function init() {
   newLevel();
   canvas = document.getElementById('canvas');
@@ -31,6 +31,13 @@ function restartGame() {
   clearAllIntervals();
   world = null; // Lösche die alte Instanz
   init();       // Erstelle eine neue Instanz
+}
+
+function muteSounds(){
+  allSoundsMute = false;
+  world.allSounds.forEach((audio) => {
+    audio.pause();
+  });
 }
 
 function clearAllIntervals() {

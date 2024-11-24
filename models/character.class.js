@@ -96,7 +96,9 @@ class Character extends MovableObject {
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.moveRight();
         this.otherDirection = false;
-        this.waking_sound.play();
+        if (allSoundsMute) {
+          this.waking_sound.play();  
+        }
         this.lastActionTime = Date.now(); // Reset bei Bewegung
         this.isSleeping = false;
       }
@@ -104,14 +106,20 @@ class Character extends MovableObject {
       if (this.world.keyboard.LEFT && this.x > -600) {
         this.moveLeft();
         this.otherDirection = true;
-        this.waking_sound.play();
+        if (allSoundsMute) {
+          this.waking_sound.play();  
+        }
+        
         this.lastActionTime = Date.now(); // Reset bei Bewegung
         this.isSleeping = false;
       }
 
       if (this.world.keyboard.SPACE && !this.isAboveGround()) {
         this.jump();
-        this.jump_sound.play();
+        if (allSoundsMute) {
+          this.jump_sound.play();  
+        }
+        
         this.lastActionTime = Date.now(); // Reset bei Aktion
         this.isSleeping = false;
       }
