@@ -73,7 +73,7 @@ h1 {
   padding-right: 8px;
 }
 
-button {
+.game-button {
   background-color: #ffae00;
   border: none;
   padding: 5px;
@@ -85,18 +85,18 @@ button {
   cursor: pointer;
 }
  
- button:active {
+ .game-button:active {
   color: white;
   box-shadow: 0 0.2rem #dfd9d9;
   transform: translateY(0.2rem);
  }
  
- button:hover:not(:disabled) {
+ .game-button:hover:not(:disabled) {
   background: rgb(224, 43, 43);
   color: white;
  }
  
- button:disabled {
+ .game-button:disabled {
   cursor: auto;
   color: grey;
  }
@@ -108,6 +108,34 @@ button {
  .height{
   height: 480px;
  }
+
+ /* From Uiverse.io by cssbuttons-io */ 
+.screen-button {
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.screen-button:hover {
+  background-color: #23c483;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.screen-button:active {
+  transform: translateY(-1px);
+}
 
 @media only screen and (max-width: 720px) {
   canvas{

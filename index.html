@@ -39,21 +39,22 @@
   </div>
   <div id="button-cover-container" class="menu-buttons">
     <div id="top-btn" class="top-menu d-none">
-      <button id="btn-mute">Mute</button>
-      <button onclick="restartGame()" id="btn-restart">restart</button>
+      <button class="game-button" id="btn-mute">Mute</button>
+      <button class="game-button" onclick="restartGame()" id="btn-restart">Restart</button>
     </div>
     <div id="middle-btn" class="middle-menu">
-      <button onclick="startGame()" id="btn-start">Start</button>
-      <button id="btn-info">Info</button>
+      <button class="screen-button" onclick="startGame()" id="btn-start">Start</button>
+      <button class="screen-button" id="btn-info">Info</button>
+      <button class="screen-button" id="btn-impressum">Impressum</button>
     </div>
     <div id="bottom-btn" class="bottom-menu d-none">
       <div class="left-buttons">
-        <button id="btn-left">left</button>
-        <button id="btn-right">right</button>
+        <button class="game-button" id="btn-left">Left</button>
+        <button class="game-button" id="btn-right">Right</button>
       </div>
       <div class="right-buttons">
-        <button id="btn-d">D</button>
-        <button id="btn-space">Space</button>
+        <button class="game-button" id="btn-d">D</button>
+        <button class="game-button" id="btn-space">Space</button>
       </div>
     </div>
   </div>
