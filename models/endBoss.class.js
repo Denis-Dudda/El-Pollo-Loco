@@ -8,7 +8,6 @@ class EndBoss extends MovableObject {
   test = false;
   energy = 60;
   bossAttack = false;
-
   IMAGES_WALKING = [
     'img/4_enemie_boss_chicken/1_walk/G1.png',
     'img/4_enemie_boss_chicken/1_walk/G2.png',
@@ -38,7 +37,9 @@ class EndBoss extends MovableObject {
     'img/4_enemie_boss_chicken/5_dead/G24.png',
     'img/4_enemie_boss_chicken/5_dead/G25.png',
     'img/4_enemie_boss_chicken/5_dead/G26.png',
-  ]
+  ];
+
+ 
 
   constructor(world){
     super().loadImage('img/4_enemie_boss_chicken/2_alert/G5.png');
