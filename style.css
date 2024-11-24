@@ -6,6 +6,8 @@ body{
   min-height: 100vh;
   margin: 0;
   background-image: url('img/5_background/desert-5112222_1920.png');
+  background-repeat: no-repeat;
+  background-size: cover;
   background-position: center;
   font-family: "Danfo", serif;
   font-weight: 400;
@@ -37,7 +39,6 @@ h1 {
   display: flex;
   flex-direction: column;
   width: 720px;
-  height: 480px;
   justify-content: space-between;
   align-items: center;
 }
@@ -72,16 +73,16 @@ h1 {
 }
 
 button {
-  background-color: #eee;
+  background-color: #ffae00;
   border: none;
   padding: 5px;
   font-size: 16px;
   width: 60px;
   border-radius: 1rem;
-  color: lightcoral;
-  box-shadow: 0 0.4rem #dfd9d9;
+  color: #080707;
+  box-shadow: 0 0.4rem #430505;
   cursor: pointer;
- }
+}
  
  button:active {
   color: white;
@@ -90,9 +91,8 @@ button {
  }
  
  button:hover:not(:disabled) {
-  background: lightcoral;
+  background: rgb(224, 43, 43);
   color: white;
-  text-shadow: 0 0.1rem #bcb4b4;
  }
  
  button:disabled {
@@ -102,6 +102,10 @@ button {
 
  .d-none {
   display: none;
+ }
+
+ .height{
+  height: 480px;
  }
 
 @media only screen and (max-width: 720px) {

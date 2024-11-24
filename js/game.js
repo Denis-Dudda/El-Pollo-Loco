@@ -18,6 +18,7 @@ function startGame() {
 function hideScreen(){
   document.getElementById('start-screen').classList.add('d-none');
   document.getElementById('middle-btn').classList.add('d-none');
+  document.getElementById('button-cover-container').classList.add('height');
 }
 
 function showButtons() {
