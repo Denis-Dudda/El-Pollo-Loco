@@ -27,6 +27,7 @@ function showButtons() {
 }
 
 function restartGame() {
+  world.gameMusic_sound.pause();
   clearAllIntervals();
   world = null; // Lösche die alte Instanz
   init();       // Erstelle eine neue Instanz
