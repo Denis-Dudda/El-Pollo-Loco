@@ -71,7 +71,7 @@ class EndBoss extends MovableObject {
   animate() {
      
       setInterval(() => {
-        console.log(this.HP);
+        
         if (this.bossAttack){
           this.speed = 9;
           if (!this.isDead()) {
