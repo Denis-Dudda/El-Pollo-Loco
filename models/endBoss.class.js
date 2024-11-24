@@ -8,6 +8,7 @@ class EndBoss extends MovableObject {
   test = false;
   energy = 60;
   bossAttack = false;
+
   IMAGES_WALKING = [
     'img/4_enemie_boss_chicken/1_walk/G1.png',
     'img/4_enemie_boss_chicken/1_walk/G2.png',
@@ -39,6 +40,15 @@ class EndBoss extends MovableObject {
     'img/4_enemie_boss_chicken/5_dead/G26.png',
   ];
 
+  IMAGES_HP = [
+    'img/7_statusbars/1_statusbar/2_statusbar_health/blue/0.png',
+    'img/7_statusbars/1_statusbar/2_statusbar_health/orange/20.png',
+    'img/7_statusbars/1_statusbar/2_statusbar_health/orange/40.png',
+    'img/7_statusbars/1_statusbar/2_statusbar_health/green/60.png',
+    'img/7_statusbars/1_statusbar/2_statusbar_health/green/80.png',
+    'img/7_statusbars/1_statusbar/2_statusbar_health/blue/100.png',
+  ];
+
  
 
   constructor(world){
@@ -51,7 +61,8 @@ class EndBoss extends MovableObject {
     this.x = 2700;
     this.animate();
     this.world = world;
-    
+    this.healthbar = new StatusBar();
+    this.updateHealthbar();
   }
 
   
@@ -84,6 +95,14 @@ class EndBoss extends MovableObject {
       }, 450);
     }
 
-
-
+    updateHealthbar() {
+      setInterval(() => {
+        this.healthbar.x = this.x;
+        this.healthbar.y = this.y;
+      }, 60);
+    }
+    draw(ctx) {
+      super.draw(ctx);
+      this.healthbar.draw(ctx);
+    }
 }

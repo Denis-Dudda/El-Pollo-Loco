@@ -10,7 +10,6 @@ class World {
   statusBar = new StatusBar();
   coinBar = new CoinBar();
   bottleBar = new BottleBar();
-  endBossBar = new EndBossBar();
   throwableObjects = [];
   bottleCount = 0;
   bottleCoolDown = true;
@@ -161,7 +160,6 @@ class World {
     this.ctx.translate(this.camera_x, 0); // (on)zeichnet alle elemente 100 pixel weiter links, sorgt dafür das die camera beim character bleibt  
     this.addObjectsToMap(this.level.backgroundObjects);   
     this.addObjectsToMap(this.level.clouds);
-    this.addToMap(this.endBossBar);
     this.ctx.translate(-this.camera_x, 0); // (off)
     this.addToMap(this.statusBar);
     this.addToMap(this.coinBar);
@@ -198,7 +196,7 @@ class World {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-   // mo.drawFrame(this.ctx);
+   // mo.drawFrame(this.ctx);        // draw Frame
 
   
 
