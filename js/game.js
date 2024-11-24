@@ -34,9 +34,14 @@ function restartGame() {
 }
 
 function muteSounds(){
-  allSoundsMute = false;
+  allSoundsMute = !allSoundsMute;
+  
   world.allSounds.forEach((audio) => {
-    audio.pause();
+    if (!allSoundsMute) {
+      audio.pause();  
+    }else{
+      audio.play();
+    }
   });
 }
 
