@@ -91,7 +91,7 @@ class Character extends MovableObject {
     // Bewegung und Kamera
     setInterval(() => {
       this.waking_sound.pause();
-      this.jump_sound.pause();
+      
 
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.moveRight();

@@ -19,7 +19,8 @@ class World {
   hurtCoolDown = false;
   coinCollect_sound = new Audio('audio/coin-sound.mp3');
   bottleCollect_sound = new Audio('audio/bottle-sound.mp3');
-  brokeBotlle_sound = new Audio('audio/broke-glas.mp3')
+  brokeBotlle_sound = new Audio('audio/broke-glas.mp3');
+  gameMusic_sound = new Audio('audio/game-music.mp3');
 
   constructor(canvas, keyboard) {
     this.winImage.src = "img/9_intro_outro_screens/win/win_2.png";
@@ -57,6 +58,9 @@ class World {
     setInterval(() => {
       this.characterCollision();
     }, 800);
+    setInterval(() => {
+      this.playSound(this.gameMusic_sound);
+    }, 200);
   }
 
   characterCollision() {
@@ -117,6 +121,7 @@ class World {
             setTimeout(() => {
               this.showWinImage = true; // win img
               this.clearAllIntervals(); // spiel beenden
+              this.gameMusic_sound.pause();
             }, 1300);
           }
           if (enemy.type == "chicken" || enemy.type == "small-chicken") {
