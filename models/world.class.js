@@ -17,6 +17,7 @@ class World {
   showWinImage = false;       // win img
   loseImage = new Image ();   // lose img
   showLoseImage = false;      // lose img
+  hurtCoolDown = false;
 
   constructor(canvas, keyboard){
     this.winImage.src = 'img/9_intro_outro_screens/win/win_2.png';
@@ -57,9 +58,13 @@ class World {
 
     characterCollision(){
         this.level.enemies.forEach((enemy) => {
-          if (this.character.isColliding(enemy) && !this.character.isAboveGround() || this.character.isColliding(enemy) && enemy.type == 'endboss'){
+          if (this.character.isColliding(enemy) && !this.character.isAboveGround() && !this.hurtCoolDown || this.character.isColliding(enemy) && enemy.type == 'endboss'){
             this.character.hit();
             this.statusBar.setPercentage(this.character.energy);
+            this.hurtCoolDown = true;
+            setTimeout(() => {
+              this.hurtCoolDown = false;
+            }, 1000);
           }
         });
     }
