@@ -36,21 +36,21 @@ class DrawableObject {
     });
   }
 
-  drawFrame(ctx){
-    
-    if (this instanceof Character || this instanceof Chicken || this instanceof Coin || this instanceof Bottle || this instanceof EndBoss || this instanceof ThrowableObject || this instanceof SmallChicken) {
-      ctx.beginPath();
-      ctx.lineWidth = '5';
-      ctx.strokeStyle = 'blue';
-      ctx.rect(
-        this.x + this.offsetX,                       // X-Position mit linkem Offset
-        this.y + this.offsetY,                       // Y-Position mit oberem Offset
-        this.width - this.offsetX - this.offsetWidth, // Breite mit linken und rechten Offsets
-        this.height - this.offsetY - this.offsetHeight // Höhe mit oberen und unteren Offsets
-      );
-      ctx.stroke();      
-    }
-
-  }
+ // drawFrame(ctx){
+ //   
+ //   if (this instanceof Character || this instanceof Chicken || this instanceof Coin || this instanceof Bottle || this instanceof EndBoss || this instanceof ThrowableObject || this instanceof SmallChicken) {               
+ //     ctx.beginPath();
+ //     ctx.lineWidth = '5';
+ //     ctx.strokeStyle = 'blue';
+ //     ctx.rect(
+ //       this.x + this.offsetX,                       // X-Position mit linkem Offset
+ //       this.y + this.offsetY,                       // Y-Position mit oberem Offset                                                               
+ //       this.width - this.offsetX - this.offsetWidth, // Breite mit linken und rechten Offsets
+ //       this.height - this.offsetY - this.offsetHeight // Höhe mit oberen und unteren Offsets
+ //     );
+ //     ctx.stroke();      
+ //   }
+ //
+ // }
 
 }
