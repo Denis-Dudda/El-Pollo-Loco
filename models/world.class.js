@@ -17,6 +17,9 @@ class World {
   loseImage = new Image(); // lose img
   showLoseImage = false; // lose img
   hurtCoolDown = false;
+  coinCollect_sound = new Audio('audio/coin-sound.mp3');
+  bottleCollect_sound = new Audio('audio/bottle-sound.mp3');
+  brokeBotlle_sound = new Audio('audio/broke-glas.mp3')
 
   constructor(canvas, keyboard) {
     this.winImage.src = "img/9_intro_outro_screens/win/win_2.png";
@@ -95,6 +98,7 @@ class World {
   removeBottle() {
     setTimeout(() => {
       this.throwableObjects.splice(0, 1); // entfernt die flaschen nach dem aufprall auf dem boden
+      this.playSound(this.brokeBotlle_sound);
     }, 1300);
   }
 
@@ -121,6 +125,7 @@ class World {
             }, 200);
           }
           this.throwableObjects.splice(j, 1);
+          this.playSound(this.brokeBotlle_sound);
         }
       });
     });
@@ -131,6 +136,7 @@ class World {
       if (this.character.isColliding(coin)) {
         this.character.catchCoin();
         this.coinBar.setPercentage(this.character.coinEnergy);
+        this.playSound(this.coinCollect_sound);
         const index = this.level.coins.indexOf(coin);
         this.level.coins.splice(index, 1);
       }
@@ -143,6 +149,7 @@ class World {
         this.character.catchBottle();
         this.bottleCount++;
         this.bottleBar.setPercentage(this.character.bottleEnergy);
+        this.playSound(this.bottleCollect_sound);
         const index = this.level.bottles.indexOf(bottle);
         this.level.bottles.splice(index, 1);
       }
@@ -239,5 +246,15 @@ class World {
 
   clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
+  }
+
+  playSound(sound) {
+    if (!sound.playing) {
+      sound.play();
+      sound.playing = true; // Markiere als "spielend"
+      sound.onended = () => {
+        sound.playing = false; // Zurücksetzen, wenn der Sound fertig ist
+      };
+    }
   }
 }
