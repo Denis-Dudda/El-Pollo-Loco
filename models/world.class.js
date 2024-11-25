@@ -26,8 +26,7 @@ class World {
 
   constructor(canvas, keyboard) {
     this.winImage.src = "img/9_intro_outro_screens/win/win_2.png";
-    this.loseImage.src =
-      "img/9_intro_outro_screens/game_over/oh no you lost!.png";
+    this.loseImage.src = "img/9_intro_outro_screens/game_over/oh no you lost!.png";
     this.ctx = canvas.getContext("2d");
     this.canvas = canvas;
     this.keyboard = keyboard;
