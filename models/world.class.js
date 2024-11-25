@@ -21,6 +21,7 @@ class World {
   bottleCollect_sound = new Audio('audio/bottle-sound.mp3');
   brokeBotlle_sound = new Audio('audio/broke-glas.mp3');
   gameMusic_sound = new Audio('audio/game-music.mp3');
+  jump_sound = new Audio('audio/jump-sound.mp3');
   allSounds = [];
 
   constructor(canvas, keyboard) {
@@ -70,6 +71,7 @@ class World {
     this.allSounds.push(this.bottleCollect_sound);
     this.allSounds.push(this.brokeBotlle_sound);
     this.allSounds.push(this.gameMusic_sound);
+    this.allSounds.push(this.jump_sound);
   }
 
   characterCollision() {
@@ -187,11 +189,14 @@ class World {
         if (this.character.jumpOnEnemy(enemy)) {
           if (enemy.type == "chicken" || enemy.type == "small-chicken") {
             enemy.hit();
+            
             setTimeout(() => {
               this.level.enemies.splice(i, 1);
             }, 300);
             this.character.jump();
-            this.playSound(this.character.jump_sound);
+            if (allSoundsMute) {
+              this.playSound(this.jump_sound);
+            }
           }
         }
       });
