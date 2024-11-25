@@ -183,6 +183,24 @@ document.addEventListener("DOMContentLoaded", function() {
     e.preventDefault();
     keyboard.SPACE = false;  // Taste losgelassen
   });
+  btnSpace.addEventListener('click', (e) => {
+    e.target.blur(); // Entfernt den Fokus nach Klick
+  });
+  btnLeft.addEventListener('click', (e) => {
+    e.target.blur(); // Entfernt den Fokus nach Klick
+  });
+  btnRight.addEventListener('click', (e) => {
+    e.target.blur(); // Entfernt den Fokus nach Klick
+  });
+  btnD.addEventListener('click', (e) => {
+    e.target.blur(); // Entfernt den Fokus nach Klick
+  });
+  document.getElementById('btn-mute').addEventListener('click', (e) => {
+    e.target.blur(); // Entfernt den Fokus nach Klick
+  });
+  document.getElementById('btn-restart').addEventListener('click', (e) => {
+    e.target.blur(); // Entfernt den Fokus nach Klick
+  });
 });
 
 
