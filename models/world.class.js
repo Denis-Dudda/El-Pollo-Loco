@@ -191,6 +191,7 @@ class World {
               this.level.enemies.splice(i, 1);
             }, 300);
             this.character.jump();
+            this.playSound(this.character.jump_sound);
           }
         }
       });

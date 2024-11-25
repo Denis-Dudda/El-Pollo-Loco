@@ -113,5 +113,5 @@ class MovableObject extends DrawableObject{
     
 
   }
-
+  
 }

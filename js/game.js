@@ -35,7 +35,6 @@ function restartGame() {
 
 function muteSounds(){
   allSoundsMute = !allSoundsMute;
-  
   world.allSounds.forEach((audio) => {
     if (!allSoundsMute) {
       audio.pause();  
