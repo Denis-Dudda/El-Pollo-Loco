@@ -62,7 +62,7 @@ class World {
     }, 800);
     setInterval(() => {
       this.playSound(this.gameMusic_sound);
-    }, 200);
+    }, 200)
   }
 
   pushSounds(){
@@ -75,16 +75,11 @@ class World {
 
   characterCollision() {
     this.level.enemies.forEach((enemy) => {
-      if (
-        (this.character.isColliding(enemy) &&
-          !this.character.isAboveGround() &&
-          !this.hurtCoolDown) ||
-        (this.character.isColliding(enemy) && enemy.type == "endboss")
-      ) {
-        this.character.hit();
-        this.statusBar.setPercentage(this.character.energy);
-        this.hurtCoolDown = true;
-        setTimeout(() => {
+      if ((this.character.isColliding(enemy) && !this.character.isAboveGround() && !this.hurtCoolDown) || (this.character.isColliding(enemy) && enemy.type == "endboss")) 
+        { this.character.hit();
+          this.statusBar.setPercentage(this.character.energy);
+          this.hurtCoolDown = true;
+          setTimeout(() => {
           this.hurtCoolDown = false;
         }, 1000);
       }

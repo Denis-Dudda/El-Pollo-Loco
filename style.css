@@ -46,7 +46,7 @@ h1 {
 .top-menu{
   display: flex;
   justify-content: flex-end;
-  width: 720px;
+  width: 100%;
   gap: 16px;
   padding-top: 8px;
   padding-right: 8px;
@@ -60,7 +60,7 @@ h1 {
 
 .bottom-menu {
   display: flex;
-  width: 720px;
+  width: 100%;
   justify-content: space-between;
 }
 
@@ -143,6 +143,8 @@ h1 {
   }
   .menu-buttons{
     width: 100%;
+    height: auto;
+    aspect-ratio: 6 / 4;
   }
 }
 
