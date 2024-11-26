@@ -18,8 +18,12 @@ function startGame() {
 function hideScreen(){
   hideId('start-screen');
   hideId('middle-btn');
-  
   document.getElementById('button-cover-container').classList.add('height');
+}
+
+function hideInfo() {
+  hideId('info-screen');
+  showId('middle-btn');
 }
 
 function showButtons() {
