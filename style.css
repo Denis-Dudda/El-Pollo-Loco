@@ -25,6 +25,16 @@ body{
     display: flex;
 }
 
+.info-screen-container{
+  position: absolute;
+  width: 720px;
+  height: 480px;
+  background-image: url(img/Info.jpg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+}
+
 canvas {
   background-color: black;
   display: block;

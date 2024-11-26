@@ -33,6 +33,10 @@ function restartGame() {
   init();       // Erstelle eine neue Instanz
 }
 
+function showInfo() {
+  document.getElementById('info-screen').classList.remove('d-none');
+}
+
 function muteSounds(){
   allSoundsMute = !allSoundsMute;
   world.allSounds.forEach((audio) => {
