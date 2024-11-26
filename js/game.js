@@ -16,14 +16,15 @@ function startGame() {
 }
 
 function hideScreen(){
-  document.getElementById('start-screen').classList.add('d-none');
-  document.getElementById('middle-btn').classList.add('d-none');
+  hideId('start-screen');
+  hideId('middle-btn');
+  
   document.getElementById('button-cover-container').classList.add('height');
 }
 
 function showButtons() {
-  document.getElementById('top-btn').classList.remove('d-none');
-  document.getElementById('bottom-btn').classList.remove('d-none');
+  showId('top-btn');
+  showId('bottom-btn');
 }
 
 function restartGame() {
@@ -34,7 +35,16 @@ function restartGame() {
 }
 
 function showInfo() {
-  document.getElementById('info-screen').classList.remove('d-none');
+  hideId('middle-btn');
+  showId('info-screen');
+}
+
+function hideId(id) {
+  document.getElementById(id).classList.add('d-none');
+}
+
+function showId(id) {
+  document.getElementById(id).classList.remove('d-none');
 }
 
 function muteSounds(){
