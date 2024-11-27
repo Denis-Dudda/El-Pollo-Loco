@@ -61,7 +61,7 @@ class World {
     }, 10);
     setInterval(() => {
       this.checkKnockBack();
-    }, 10);
+    }, 1);
     setInterval(() => {
       this.characterCollision();
     }, 800);
@@ -86,7 +86,7 @@ class World {
           this.hurtCoolDown = true;
           setTimeout(() => {
           this.hurtCoolDown = false;
-        }, 1000);
+        }, 600);
       }
     });
   }
@@ -96,12 +96,10 @@ class World {
       if ((this.character.isColliding(enemy) && enemy.type == "endboss")) { 
           this.knockBack = true;
             if (this.knockBack) {
-              this.character.x -= 5;
+              this.character.x -= 2;
               this.knockBack = false;
-            }
-      }
+            }}
     });
-    
   }
 
   checkThrwoObjects() {
