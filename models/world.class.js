@@ -96,7 +96,7 @@ class World {
       if ((this.character.isColliding(enemy) && enemy.type == "endboss")) { 
           this.knockBack = true;
             if (this.knockBack) {
-              this.character.x -= 2;
+              this.character.x -= 5;
               this.knockBack = false;
             }
       }
@@ -128,38 +128,30 @@ class World {
       if (allSoundsMute) {
         this.playSound(this.brokeBotlle_sound);  
       }
-      
     }, 1300);
   }
 
   checkCollisions() {
-    this.level.enemies.forEach((enemy, index) => {
-      // wurf kollision
+    this.level.enemies.forEach((enemy, index) => {            // wurf kollision
       this.throwableObjects.forEach((bottle, j) => {
         if (bottle.isColliding(enemy)) {
           enemy.hit();
           if (enemy.type == "endboss") {
             this.endBoss.HP = this.endBoss.HP - 20;
-            enemy.healthbar.setPercentage(this.endBoss.HP);
-          }
-
+            enemy.healthbar.setPercentage(this.endBoss.HP);}
           if (enemy.type == "endboss" && enemy.energy == 0) {
             setTimeout(() => {
               this.showWinImage = true; // win img
               this.clearAllIntervals(); // spiel beenden
               this.gameMusic_sound.pause();
-            }, 1300);
-          }
+            }, 1300);}
           if (enemy.type == "chicken" || enemy.type == "small-chicken") {
             setTimeout(() => {
               this.level.enemies.splice(index, 1);
-            }, 200);
-          }
+            }, 200);}
           this.throwableObjects.splice(j, 1);
           if (allSoundsMute) {
-            this.playSound(this.brokeBotlle_sound);  
-          }
-          
+            this.playSound(this.brokeBotlle_sound);}
         }
       });
     });
@@ -171,9 +163,7 @@ class World {
         this.character.catchCoin();
         this.coinBar.setPercentage(this.character.coinEnergy);
         if (allSoundsMute) {
-          this.playSound(this.coinCollect_sound);  
-        }
-        
+          this.playSound(this.coinCollect_sound);}
         const index = this.level.coins.indexOf(coin);
         this.level.coins.splice(index, 1);
       }
@@ -187,8 +177,7 @@ class World {
         this.bottleCount++;
         this.bottleBar.setPercentage(this.character.bottleEnergy);
         if (allSoundsMute) {
-          this.playSound(this.bottleCollect_sound);  
-        }
+          this.playSound(this.bottleCollect_sound);}
         const index = this.level.bottles.indexOf(bottle);
         this.level.bottles.splice(index, 1);
       }
@@ -201,7 +190,6 @@ class World {
         if (this.character.jumpOnEnemy(enemy)) {
           if (enemy.type == "chicken" || enemy.type == "small-chicken") {
             enemy.hit();
-            
             setTimeout(() => {
               this.level.enemies.splice(i, 1);
             }, 300);
@@ -224,7 +212,6 @@ class World {
     this.addToMap(this.statusBar);
     this.addToMap(this.coinBar);
     this.addToMap(this.bottleBar);
-
     this.ctx.translate(this.camera_x, 0); // (on)
     this.addToMap(this.character);
     this.addObjectsToMap(this.level.coins);
@@ -243,9 +230,7 @@ class World {
     }
     if (this.character.showLoseImage) {
       this.ctx.drawImage(
-        this.loseImage,
-        0,
-        0,
+        this.loseImage,0,0,
         this.canvas.width,
         this.canvas.height
       ); // lose img
@@ -296,7 +281,7 @@ class World {
       sound.play();
       sound.playing = true; // Markiere als "spielend"
       sound.onended = () => {
-        sound.playing = false; // Zurücksetzen, wenn der Sound fertig ist
+      sound.playing = false; // Zurücksetzen, wenn der Sound fertig ist
       };
     }
   }
