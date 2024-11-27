@@ -9,48 +9,6 @@ function init() {
   
 }
 
-function startGame() {
-  hideScreen();
-  showButtons();
-  init();
-}
-
-function hideScreen(){
-  hideId('start-screen');
-  hideId('middle-btn');
-  document.getElementById('button-cover-container').classList.add('height');
-}
-
-function hideInfo() {
-  hideId('info-screen');
-  showId('middle-btn');
-}
-
-function showButtons() {
-  showId('top-btn');
-  showId('bottom-btn');
-}
-
-function restartGame() {
-  world.gameMusic_sound.pause();
-  clearAllIntervals();
-  world = null; // Lösche die alte Instanz
-  init();       // Erstelle eine neue Instanz
-}
-
-function showInfo() {
-  hideId('middle-btn');
-  showId('info-screen');
-}
-
-function hideId(id) {
-  document.getElementById(id).classList.add('d-none');
-}
-
-function showId(id) {
-  document.getElementById(id).classList.remove('d-none');
-}
-
 function muteSounds(){
   allSoundsMute = !allSoundsMute;
   world.allSounds.forEach((audio) => {
@@ -221,5 +179,55 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+function startGame() {
+  hideScreen();
+  showButtons();
+  init();
+}
 
+function hideScreen(){
+  hideId('start-screen');
+  hideId('middle-btn');
+  document.getElementById('button-cover-container').classList.add('height');
+}
+
+function hideInfo() {
+  hideId('info-screen');
+  showId('middle-btn');
+}
+
+function showButtons() {
+  showId('top-btn');
+  showId('bottom-btn');
+}
+
+function restartGame() {
+  world.gameMusic_sound.pause();
+  clearAllIntervals();
+  world = null; // Lösche die alte Instanz
+  init();       // Erstelle eine neue Instanz
+}
+
+function showInfo() {
+  hideId('middle-btn');
+  showId('info-screen');
+}
+
+function showImpressum() {
+  hideId('middle-btn');
+  showId('impressum-screen');
+}
+
+ function hideImpressum(){
+  hideId('impressum-screen');
+  showId('middle-btn');
+ }
+
+function hideId(id) {
+  document.getElementById(id).classList.add('d-none');
+}
+
+function showId(id) {
+  document.getElementById(id).classList.remove('d-none');
+}
 

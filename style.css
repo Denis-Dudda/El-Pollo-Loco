@@ -36,6 +36,31 @@ body{
   justify-content: center;
 }
 
+.impressum-screen-container {
+  position: absolute;
+  width: 720px;
+  height: 480px;
+  background-image: url(img/impressum.png);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+
+.text-impressum{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: white;
+  text-decoration: underline;
+}
+
 .info-keys {
   display: flex;
   flex-direction: column;
