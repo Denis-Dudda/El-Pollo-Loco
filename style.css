@@ -200,7 +200,10 @@ h1 {
   canvas{
     width: 100%;
   }
-  .menu-buttons{
+  .menu-buttons,
+  .start-screen-container,
+  .info-screen-container,
+  .impressum-screen-container{
     width: 100%;
     height: auto;
     aspect-ratio: 6 / 4;
