@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Danfo&display=swap" rel="stylesheet">
   <link rel="icon" href="img/favicon-tacco.jpg" type="image/x-icon">
 
-  <title>Document</title>
+  <title>El-Pollo-Loco</title>
   
   <script src="models/drawable-object.class.js"></script>
   <script src="models/movable-object.class.js"></script>
@@ -32,8 +32,9 @@
   <script src="js/game.js"></script>
 </head>
 <body>
-  <!--<h1>El Pollo Loco</h1>-->
-
+  <div class="landscape d-none">
+    <p>Please rotate your device !</p>
+  </div>
   <div id="start-screen" class="start-screen-container">
     <div id="middle-btn" class="middle-menu">
       <button class="screen-button" onclick="startGame()" id="btn-start">Start</button>
@@ -80,7 +81,6 @@
       ></path>
     </svg>
   </div>
-
   <div class="mute-speaker">
     <svg version="1.0" viewBox="0 0 75 75" stroke="#fff" stroke-width="5">
       <path
@@ -96,10 +96,8 @@
     </svg>
   </div>
 </label>
-     <!-- <button class="game-button" onclick="muteSounds()" id="btn-mute">Mute</button>-->
       <button class="game-button" onclick="restartGame()" id="btn-restart">Restart</button>
     </div>
-
     <div id="bottom-btn" class="bottom-menu d-none">
       <div class="left-buttons">
         <button class="game-button" id="btn-left">Left</button>
@@ -111,14 +109,8 @@
       </div>
     </div>
   </div>
-    
-  
-  
   <canvas id="canvas" width="720" height="480"></canvas>
   <section id="aktion-buttons" class="aktion-buttons d-none">
-    
-
-    
   </section>
 </body>
 </html>
