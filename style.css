@@ -23,6 +23,8 @@ body{
     background-position: center;
     background-size: cover;
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .info-screen-container {
@@ -66,10 +68,10 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 25%;
   height: 100%;
   font-size: 32px;
   color: #fde632;
+  gap: 40px;
 }
 
 .info-description {
@@ -77,11 +79,11 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 32%;
   height: 100%;
   font-size: 32px;
   color: #fde632;
   text-align: center;
+  gap: 40px;
 }
 
 canvas {
@@ -298,5 +300,11 @@ h1 {
   }
 }
 
-
+@media (max-width: 500px){
+  .info-description,
+  .info-keys{
+    font-size: 22px;
+  }
+  
+}
 

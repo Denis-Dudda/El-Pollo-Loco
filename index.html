@@ -35,19 +35,24 @@
   <!--<h1>El Pollo Loco</h1>-->
 
   <div id="start-screen" class="start-screen-container">
+    <div id="middle-btn" class="middle-menu">
+      <button class="screen-button" onclick="startGame()" id="btn-start">Start</button>
+      <button class="screen-button" onclick="showInfo()" id="btn-info">Info</button>
+      <button class="screen-button" onclick="showImpressum()" id="btn-impressum">Impressum</button>
+    </div>
   </div>
   <div id="info-screen" onclick="hideInfo()" class="info-screen-container d-none">
       <div class="info-keys">  
-        <p>&#8592</p>
-        <p>&#8594</p>
-        <p>D</p>
-        <p>Space</p>
+        <span>&#8592</span>
+        <span>&#8594</span>
+        <span>D</span>
+        <span>Space</span>
       </div>
       <div class="info-description">  
-        <p>move left</p>
-        <p>move right</p>
-        <p>throw bottle</p>
-        <p>jump</p>
+        <span>move left</span>
+        <span>move right</span>
+        <span>throw bottle</span>
+        <span>jump</span>
       </div>
   </div>
   <div id="impressum-screen" onclick="hideImpressum()" class="impressum-screen-container d-none">
@@ -94,11 +99,7 @@
      <!-- <button class="game-button" onclick="muteSounds()" id="btn-mute">Mute</button>-->
       <button class="game-button" onclick="restartGame()" id="btn-restart">Restart</button>
     </div>
-    <div id="middle-btn" class="middle-menu">
-      <button class="screen-button" onclick="startGame()" id="btn-start">Start</button>
-      <button class="screen-button" onclick="showInfo()" id="btn-info">Info</button>
-      <button class="screen-button" onclick="showImpressum()" id="btn-impressum">Impressum</button>
-    </div>
+
     <div id="bottom-btn" class="bottom-menu d-none">
       <div class="left-buttons">
         <button class="game-button" id="btn-left">Left</button>
