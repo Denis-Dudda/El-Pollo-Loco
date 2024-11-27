@@ -23,6 +23,8 @@ class World {
   gameMusic_sound = new Audio('audio/game-music.mp3');
   jump_sound = new Audio('audio/jump-sound.mp3');
   allSounds = [];
+  knockBack = false;
+
 
   constructor(canvas, keyboard) {
     this.winImage.src = "img/9_intro_outro_screens/win/win_2.png";
@@ -58,6 +60,9 @@ class World {
       this.checkJumpOn();
     }, 10);
     setInterval(() => {
+      this.checkKnockBack();
+    }, 10);
+    setInterval(() => {
       this.characterCollision();
     }, 800);
     setInterval(() => {
@@ -84,6 +89,19 @@ class World {
         }, 1000);
       }
     });
+  }
+
+  checkKnockBack(){
+    this.level.enemies.forEach((enemy) => {
+      if ((this.character.isColliding(enemy) && enemy.type == "endboss")) { 
+          this.knockBack = true;
+            if (this.knockBack) {
+              this.character.x -= 2;
+              this.knockBack = false;
+            }
+      }
+    });
+    
   }
 
   checkThrwoObjects() {
