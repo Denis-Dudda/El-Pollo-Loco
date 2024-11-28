@@ -4,7 +4,6 @@ class DrawableObject {
   offsetY = 0;
   offsetWidth = 0;
   offsetHeight = 0;
-
   img;
   imageCache = {};
   currentImage = 0;
@@ -12,7 +11,6 @@ class DrawableObject {
   y = 280;
   height = 150;
   width = 100;
-
 
   loadImage(path){
     this.img = new Image(); // Image muss nicht neu definiert werden kommt vom js
