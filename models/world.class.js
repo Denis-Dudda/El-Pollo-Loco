@@ -204,41 +204,50 @@ class World {
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.translate(this.camera_x, 0); // (on)zeichnet alle elemente 100 pixel weiter links, sorgt dafür das die camera beim character bleibt
-    this.addObjectsToMap(this.level.backgroundObjects);
-    this.addObjectsToMap(this.level.clouds);
+    this.drawAddObjects();
     this.ctx.translate(-this.camera_x, 0); // (off)
-    this.addToMap(this.statusBar);
-    this.addToMap(this.coinBar);
-    this.addToMap(this.bottleBar);
+    this.drawBars();
     this.ctx.translate(this.camera_x, 0); // (on)
     this.addToMap(this.character);
-    this.addObjectsToMap(this.level.coins);
-    this.addObjectsToMap(this.level.bottles);
-    this.addObjectsToMap(this.level.enemies);
-    this.addObjectsToMap(this.throwableObjects);
     this.ctx.translate(-this.camera_x, 0); // verschiebt das bild dann wieder zurück so das die camera am character bleibt
-    if (this.showWinImage) {
-      this.ctx.drawImage(
-        this.winImage,
-        0,
-        0,
-        this.canvas.width,
-        this.canvas.height
-      ); // win img
-    }
-    if (this.character.showLoseImage) {
-      this.ctx.drawImage(
-        this.loseImage,0,0,
-        this.canvas.width,
-        this.canvas.height
-      ); // lose img
-    }
+    this.drawWinOrLose();
     // draw wird immer wieder aufgerufen
     let self = this;
     requestAnimationFrame(function () {
       self.draw();
     });
   }
+
+  drawAddObjects(){
+    this.addObjectsToMap(this.level.backgroundObjects);
+    this.addObjectsToMap(this.level.clouds);
+    this.addObjectsToMap(this.level.coins);
+    this.addObjectsToMap(this.level.bottles);
+    this.addObjectsToMap(this.level.enemies);
+    this.addObjectsToMap(this.throwableObjects);
+  }
+
+  drawBars(){
+    this.addToMap(this.statusBar);
+    this.addToMap(this.coinBar);
+    this.addToMap(this.bottleBar);
+  }
+
+  drawWinOrLose(){
+    if (this.showWinImage) {
+      this.ctx.drawImage(
+        this.winImage,0,0,
+        this.canvas.width,
+        this.canvas.height
+      );}
+    if (this.character.showLoseImage) {
+      this.ctx.drawImage(
+        this.loseImage,0,0,
+        this.canvas.width,
+        this.canvas.height
+      );}   
+  }
+
   // führt addToMap immer wieder aus benutzen für arrays
   addObjectsToMap(objects) {
     objects.forEach((o) => {
