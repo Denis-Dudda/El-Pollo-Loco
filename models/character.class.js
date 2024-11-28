@@ -91,8 +91,6 @@ class Character extends MovableObject {
     // Bewegung und Kamera
     setInterval(() => {
       this.waking_sound.pause();
-      
-
       if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
         this.moveRight();
         this.otherDirection = false;
@@ -102,28 +100,23 @@ class Character extends MovableObject {
         this.lastActionTime = Date.now(); // Reset bei Bewegung
         this.isSleeping = false;
       }
-
       if (this.world.keyboard.LEFT && this.x > -600) {
         this.moveLeft();
         this.otherDirection = true;
         if (allSoundsMute) {
           this.waking_sound.play();  
-        }
-        
+        }        
         this.lastActionTime = Date.now(); // Reset bei Bewegung
         this.isSleeping = false;
       }
-
       if (this.world.keyboard.SPACE && !this.isAboveGround()) {
         this.jump();
         if (allSoundsMute) {
           this.jump_sound.play();  
-        }
-        
+        } 
         this.lastActionTime = Date.now(); // Reset bei Aktion
         this.isSleeping = false;
       }
-
       this.world.camera_x = -this.x + 100; // Kamera-Position
     }, 1000 / 60);
 
