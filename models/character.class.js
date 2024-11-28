@@ -98,33 +98,52 @@ class Character extends MovableObject {
     // Animationen
     setInterval(() => {
       const now = Date.now();
-
       if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD);
-        setTimeout(() => {
-          this.world.clearAllIntervals();
-          this.showLoseImage = true; // lose img
-        }, 400);
+        this.playDead();
       } else if (this.isHurt()) {
-        this.playAnimation(this.IMAGES_HURT);
-        this.lastActionTime = now; // Reset bei Aktion
-        this.isSleeping = false;
+        this.playHurt(now);
       } else if (this.isAboveGround()) {
-        this.playAnimation(this.IMAGES_JUMPING);
-        this.lastActionTime = now; // Reset bei Aktion
-        this.isSleeping = false;
+        this.playJump(now);
       } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-        this.playAnimation(this.IMAGES_WALKING);
-        this.lastActionTime = now; // Reset bei Bewegung
-        this.isSleeping = false;
+        this.playWalk(now);
       } else if (now - this.lastActionTime > 5000) {
-        this.playAnimation(this.IMAGES_SLEEP);
-        this.isSleeping = true;
+        this.playSleep();
       } else {
-        this.playAnimation(this.IMAGES_STAY);
-        this.isSleeping = false;
+        this.playStay();
       }
     }, 150);
+  }
+
+  playDead(){
+    this.playAnimation(this.IMAGES_DEAD);
+    setTimeout(() => {
+      this.world.clearAllIntervals();
+      this.showLoseImage = true; // lose img
+    }, 400);
+  }
+
+  playHurt(now){
+    this.playAnimation(this.IMAGES_HURT);
+    this.lastActionTime = now; // Reset bei Aktion
+    this.isSleeping = false;
+  }
+  playJump(now){
+    this.playAnimation(this.IMAGES_JUMPING);
+    this.lastActionTime = now; // Reset bei Aktion
+    this.isSleeping = false;
+  }
+  playWalk(now){
+    this.playAnimation(this.IMAGES_WALKING);
+    this.lastActionTime = now; // Reset bei Bewegung
+    this.isSleeping = false;
+  }
+  playSleep(){
+    this.playAnimation(this.IMAGES_SLEEP);
+    this.isSleeping = true;
+  }
+  playStay(){
+    this.playAnimation(this.IMAGES_STAY);
+    this.isSleeping = false;
   }
 
   animateHelperMoveLeftRight(){
