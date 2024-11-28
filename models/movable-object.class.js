@@ -1,8 +1,5 @@
 class MovableObject extends DrawableObject{
 
-
-
-
   speed = 0.1;
   otherDirection = false;
   speedY = 0;
@@ -11,15 +8,13 @@ class MovableObject extends DrawableObject{
   coinEnergy = 0;
   bottleEnergy = 0;
   lastHit = 0;
-  
-  
+    
   applyGravity(){
     setInterval(() => {
       if (this.isAboveGround() || this.speedY > 0) {
         this.y -= this.speedY;
         this.speedY -= this.acceleration;        
-      }
-      
+      }    
     }, 1000 / 25);
   }
 
@@ -101,17 +96,11 @@ class MovableObject extends DrawableObject{
     this.currentImage++;
   }
   
-
   moveRight(){
     this.x += this.speed;
-    
-
   }
 
   moveLeft() {
     this.x -= this.speed;
-    
-
   }
-  
 }

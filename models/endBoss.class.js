@@ -69,20 +69,13 @@ class EndBoss extends MovableObject {
   
 
   animate() {
-     
       setInterval(() => {
-        
         if (this.bossAttack){
           this.speed = 9;
           if (!this.isDead()) {
             this.moveLeft();    
-          }
-        
-      }
+          }}
       },100);      
-    
-
-    
       setInterval(() => {
         if (this.isDead()) {
           this.playAnimation(this.IMAGES_DEAD); // Höchste Priorität: Boss ist tot
@@ -108,5 +101,4 @@ class EndBoss extends MovableObject {
       super.draw(ctx);
       this.healthbar.draw(ctx);
     }
-
 }
