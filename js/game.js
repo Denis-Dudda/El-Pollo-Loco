@@ -6,7 +6,6 @@ function init() {
   newLevel();
   canvas = document.getElementById('canvas');
   world = new World(canvas, keyboard);
-  
 }
 
 function muteSounds(){

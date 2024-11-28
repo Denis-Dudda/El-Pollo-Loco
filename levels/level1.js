@@ -1,9 +1,7 @@
 let level;
 
-
 function newLevel() {
   
-
 level1 = new Level(
   [
     new Chicken(),
@@ -82,8 +80,5 @@ level1 = new Level(
     new Bottle(1000, 350),
     new Bottle(1200, 350),
   ],
-
-
-
 );
 }
