@@ -105,9 +105,8 @@ class World {
   checkThrwoObjects() {
     if (this.keyboard.D && this.bottleCount > 0 && this.bottleCoolDown) {
       let bottle = new ThrowableObject(
-        this.character.x + 100,
-        this.character.y + 100
-      );
+      this.character.x + 100,
+      this.character.y + 100);
       this.throwableObjects.push(bottle);
       this.bottleCount--; // minus für jeden wurf
       this.removeBottle();
@@ -116,8 +115,7 @@ class World {
       this.bottleCoolDown = false;
       setTimeout(() => {
         this.bottleCoolDown = true;
-      }, 1500);
-    }
+      }, 1500);}
   }
 
   removeBottle() {
@@ -134,25 +132,33 @@ class World {
       this.throwableObjects.forEach((bottle, j) => {
         if (bottle.isColliding(enemy)) {
           enemy.hit();
-          if (enemy.type == "endboss") {
-            this.endBoss.HP = this.endBoss.HP - 20;
-            enemy.healthbar.setPercentage(this.endBoss.HP);}
-          if (enemy.type == "endboss" && enemy.energy == 0) {
-            setTimeout(() => {
-              this.showWinImage = true; // win img
-              this.clearAllIntervals(); // spiel beenden
-              this.gameMusic_sound.pause();
-            }, 1300);}
-          if (enemy.type == "chicken" || enemy.type == "small-chicken") {
-            setTimeout(() => {
-              this.level.enemies.splice(index, 1);
-            }, 200);}
-          this.throwableObjects.splice(j, 1);
-          if (allSoundsMute) {
-            this.playSound(this.brokeBotlle_sound);}
+          this.collisionHelperEndboss(enemy);
+          this.collisionHelperChicken(enemy,index,j);
         }
       });
     });
+  }
+
+  collisionHelperEndboss(enemy){
+    if (enemy.type == "endboss") {
+      this.endBoss.HP = this.endBoss.HP - 20;
+      enemy.healthbar.setPercentage(this.endBoss.HP);}
+    if (enemy.type == "endboss" && enemy.energy == 0) {
+      setTimeout(() => {
+        this.showWinImage = true; // win img
+        this.clearAllIntervals(); // spiel beenden
+        this.gameMusic_sound.pause();
+      }, 1300);}
+  }
+
+  collisionHelperChicken(enemy,index,j){
+    if (enemy.type == "chicken" || enemy.type == "small-chicken") {
+      setTimeout(() => {
+        this.level.enemies.splice(index, 1);
+      }, 200);}
+    this.throwableObjects.splice(j, 1);
+    if (allSoundsMute) {
+      this.playSound(this.brokeBotlle_sound);}
   }
 
   checkCoinCollision() {
@@ -193,10 +199,8 @@ class World {
             }, 300);
             this.character.jump();
             if (allSoundsMute) {
-              this.playSound(this.jump_sound);
-            }
-          }
-        }
+              this.playSound(this.jump_sound);}
+          }}
       });
     }
   }
