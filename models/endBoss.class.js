@@ -76,29 +76,33 @@ class EndBoss extends MovableObject {
             this.moveLeft();    
           }}
       },100);      
-      setInterval(() => {
-        if (this.isDead()) {
-          this.playAnimation(this.IMAGES_DEAD); // Höchste Priorität: Boss ist tot
-        } else if (this.isHurt()) {
-          this.playAnimation(this.IMAGES_HURT); // Zweithöchste Priorität: Boss ist verwundet
-          this.bossAttack = true; // Wechsel in Angriffsmodus
-        } else if (this.bossAttack) {
-          this.playAnimation(this.IMAGES_WALKING); // Dritthöchste Priorität: Boss greift an
-        } else {
-          this.playAnimation(this.IMAGES_ALERT); // Standardzustand: Alert
-        }
-      }, 450);
+      this.animateIntervalHelper();
     }
 
-    updateHealthbar() {
-      setInterval(() => {
-        this.healthbar.x = this.x;
-        this.healthbar.y = this.y;
+  animateIntervalHelper(){
+    setInterval(() => {
+      if (this.isDead()) {
+        this.playAnimation(this.IMAGES_DEAD); // Höchste Priorität: Boss ist tot
+      } else if (this.isHurt()) {
+        this.playAnimation(this.IMAGES_HURT); // Zweithöchste Priorität: Boss ist verwundet
+        this.bossAttack = true; // Wechsel in Angriffsmodus
+      } else if (this.bossAttack) {
+        this.playAnimation(this.IMAGES_WALKING); // Dritthöchste Priorität: Boss greift an
+      } else {
+        this.playAnimation(this.IMAGES_ALERT); // Standardzustand: Alert
+      }
+    }, 450);
+  }
+
+  updateHealthbar() {
+    setInterval(() => {
+      this.healthbar.x = this.x;
+      this.healthbar.y = this.y;
       }, 60);
     }
 
     draw(ctx) {
       super.draw(ctx);
       this.healthbar.draw(ctx);
-    }
+  }
 }
