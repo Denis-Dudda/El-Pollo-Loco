@@ -196,6 +196,7 @@ function restartGame() {
   clearAllIntervals();
   world = null; // Lösche die alte Instanz
   init();       // Erstelle eine neue Instanz
+  hideId('btn-restart')
 }
 
 function showInfo() {

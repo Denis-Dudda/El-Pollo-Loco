@@ -147,6 +147,7 @@ class World {
       setTimeout(() => {
         this.showWinImage = true; // win img
         this.clearAllIntervals(); // spiel beenden
+        document.getElementById('btn-restart').classList.remove('d-none');
         this.gameMusic_sound.pause();
       }, 1300);}
   }
