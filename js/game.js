@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function() {
   btnD.addEventListener('click', (e) => {
     e.target.blur(); // Entfernt den Fokus nach Klick
   });
-  document.getElementById('checkboxInput').addEventListener('click', (e) => {
+  document.getElementById('mute-btn').addEventListener('click', (e) => {
     e.target.blur(); // Entfernt den Fokus nach Klick
   });
   document.getElementById('btn-restart').addEventListener('click', (e) => {
