@@ -85,6 +85,7 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_SLEEP);
     this.applyGravity();
     this.animate();
+    this.characterPosition();
   }
 
   animate() {
@@ -174,6 +175,14 @@ class Character extends MovableObject {
       this.isSleeping = false;
     }
     this.world.camera_x = -this.x + 100; // Kamera-Position
+  }
+
+  characterPosition(){
+    setInterval(() => {
+      if (this.y > 180) {
+        this.y = 180;
+      }
+    }, 10);
   }
 
   jump() {
