@@ -2,21 +2,12 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let allSoundsMute = true;
+let soundIcon = false;
+ 
 function init() {
   newLevel();
   canvas = document.getElementById('canvas');
   world = new World(canvas, keyboard);
-}
-
-function muteSounds(){
-  allSoundsMute = !allSoundsMute;
-  world.allSounds.forEach((audio) => {
-    if (!allSoundsMute) {
-      audio.pause();  
-    }else{
-      audio.play();
-    }
-  });
 }
 
 function clearAllIntervals() {
@@ -230,3 +221,25 @@ function showId(id) {
   document.getElementById(id).classList.remove('d-none');
 }
 
+function muteSounds(){
+  allSoundsMute = !allSoundsMute;
+  world.allSounds.forEach((audio) => {
+    if (!allSoundsMute) {
+      audio.pause();  
+    }else{
+      audio.play();
+    }
+  });
+  changeSoundIcon();
+}
+
+function changeSoundIcon() {
+soundIcon = !soundIcon;
+if (soundIcon) {
+  document.getElementById('sound-icon-id').classList.add('d-none');
+  document.getElementById('mute-icon-id').classList.remove('d-none');
+}else{
+  document.getElementById('sound-icon-id').classList.remove('d-none');
+  document.getElementById('mute-icon-id').classList.add('d-none');
+}
+}
