@@ -2,7 +2,6 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let allSoundsMute = true;
-let soundIcon = false;
  
 function init() {
   newLevel();
@@ -196,7 +195,14 @@ function restartGame() {
   clearAllIntervals();
   world = null; // Lösche die alte Instanz
   init();       // Erstelle eine neue Instanz
-  hideId('btn-restart')
+  hideId('btn-restart');
+  checkSounds();
+}
+
+function checkSounds(){
+  if (!allSoundsMute) {
+    allSoundsMute = true;
+  }
 }
 
 function showInfo() {
@@ -231,16 +237,5 @@ function muteSounds(){
       audio.play();
     }
   });
-  changeSoundIcon();
 }
 
-function changeSoundIcon() {
-soundIcon = !soundIcon;
-if (soundIcon) {
-  document.getElementById('sound-icon-id').classList.add('d-none');
-  document.getElementById('mute-icon-id').classList.remove('d-none');
-}else{
-  document.getElementById('sound-icon-id').classList.remove('d-none');
-  document.getElementById('mute-icon-id').classList.add('d-none');
-}
-}
