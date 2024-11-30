@@ -59,6 +59,9 @@ class EndBoss extends MovableObject {
    */
   HP = 100;
 
+  boostTime = 1000; // Time duration for speed boost
+  nextBoost = Math.random() * 5000 + 2000; // Random interval for the next boost
+
   /**
    * The images for the walking animation of the EndBoss.
    * @type {string[]}
@@ -141,32 +144,29 @@ class EndBoss extends MovableObject {
    * Handles speed changes during boosts and animates the boss based on its state (walking, alert, etc.).
    */
   animate() {
-    let boostTime = 1000; // Time duration for speed boost
-    let nextBoost = Math.random() * 5000 + 2000; // Random interval for the next boost
-  
     setInterval(() => {
       if (this.bossAttack) {
-        if (boostTime > 0) {
-          this.speed = 30; // Speed boost during attack
-          boostTime -= 100; // Decrease boost time
-        } else {
-          this.speed = 9; // Normal speed after boost
-          nextBoost -= 100; // Decrease time to next boost
-          if (nextBoost <= 0) {
-            boostTime = 1000; // Activate boost for 1 second
-            nextBoost = Math.random() * 5000 + 1000; // Set new random interval
-          }
-        }
-  
-        // Move the EndBoss based on the current speed
+        this.animateBossSpeed();
         if (!this.isDead()) {
           this.moveLeft();
         }
       }
     }, 100); // Update animation every 100ms
-
-    // Start animation helper
     this.animateIntervalHelper();
+  }
+
+  animateBossSpeed(){
+    if (this.boostTime > 0) {
+      this.speed = 30; // Speed boost during attack
+      this.boostTime -= 100; // Decrease boost time
+    } else {
+      this.speed = 9; // Normal speed after boost
+      this.nextBoost -= 100; // Decrease time to next boost
+      if (this.nextBoost <= 0) {
+        this.boostTime = 1000; // Activate boost for 1 second
+        this.nextBoost = Math.random() * 5000 + 1000; // Set new random interval
+      }
+    }
   }
 
   /**
