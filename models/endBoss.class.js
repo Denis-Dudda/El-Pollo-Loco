@@ -1,10 +1,10 @@
 /**
  * Represents the EndBoss in the game.
- * The EndBoss is a powerful enemy that has different states (walking, alert, hurt, dead)
- * and attacks the player. It also has a health bar that updates as the boss takes damage.
+ * The EndBoss is a powerful enemy that has various states (walking, alert, hurt, dead),
+ * attacks the player, and features a health bar that dynamically updates as it takes damage.
+ * It inherits from the `MovableObject` class.
  */
 class EndBoss extends MovableObject {
-  
   /**
    * The height of the EndBoss.
    * @type {number}
@@ -24,31 +24,31 @@ class EndBoss extends MovableObject {
   y = 55;
 
   /**
-   * The game world the EndBoss exists in.
+   * The game world that the EndBoss exists in.
    * @type {Object}
    */
   world;
 
   /**
-   * The type of the object. This is set to 'endboss' for this class.
+   * The type of the object. For the EndBoss, it is set to 'endboss'.
    * @type {string}
    */
   type = 'endboss';
 
   /**
-   * A test flag (could be used for debugging or testing specific behaviors).
+   * A test flag, potentially used for debugging or testing purposes.
    * @type {boolean}
    */
   test = false;
 
   /**
-   * The health of the EndBoss.
+   * The health (energy) level of the EndBoss.
    * @type {number}
    */
   energy = 100;
 
   /**
-   * Indicates whether the EndBoss is in an attack state.
+   * Indicates whether the EndBoss is currently in an attack state.
    * @type {boolean}
    */
   bossAttack = false;
@@ -59,11 +59,20 @@ class EndBoss extends MovableObject {
    */
   HP = 100;
 
-  boostTime = 1000; // Time duration for speed boost
-  nextBoost = Math.random() * 5000 + 2000; // Random interval for the next boost
+  /**
+   * The duration for which the EndBoss receives a speed boost during attack (in milliseconds).
+   * @type {number}
+   */
+  boostTime = 1000;
 
   /**
-   * The images for the walking animation of the EndBoss.
+   * The time interval until the next speed boost (in milliseconds).
+   * @type {number}
+   */
+  nextBoost = Math.random() * 5000 + 2000;
+
+  /**
+   * Array of image paths for the walking animation.
    * @type {string[]}
    */
   IMAGES_WALKING = [
@@ -74,7 +83,7 @@ class EndBoss extends MovableObject {
   ];
 
   /**
-   * The images for the alert animation of the EndBoss.
+   * Array of image paths for the alert animation.
    * @type {string[]}
    */
   IMAGES_ALERT = [
@@ -89,7 +98,7 @@ class EndBoss extends MovableObject {
   ];
 
   /**
-   * The images for the hurt animation of the EndBoss.
+   * Array of image paths for the hurt animation.
    * @type {string[]}
    */
   IMAGES_HURT = [
@@ -99,7 +108,7 @@ class EndBoss extends MovableObject {
   ];
 
   /**
-   * The images for the dead animation of the EndBoss.
+   * Array of image paths for the dead animation.
    * @type {string[]}
    */
   IMAGES_DEAD = [
@@ -109,7 +118,7 @@ class EndBoss extends MovableObject {
   ];
 
   /**
-   * The images for the health bar of the EndBoss.
+   * Array of image paths for the health bar.
    * @type {string[]}
    */
   IMAGES_HP = [
@@ -123,25 +132,25 @@ class EndBoss extends MovableObject {
 
   /**
    * Creates an instance of the EndBoss.
-   * @param {Object} world The game world where the EndBoss exists.
+   * @param {Object} world - The game world where the EndBoss exists.
    */
   constructor(world) {
     super().loadImage('img/4_enemie_boss_chicken/2_alert/G5.png');
-    this.setCollisionOffsets(35, 20, 20, 20); // Set collision area offsets
+    this.setCollisionOffsets(35, 20, 20, 20);
     this.loadImages(this.IMAGES_ALERT);
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
     this.loadImages(this.IMAGES_WALKING);
-    this.x = 2700; // Initial horizontal position
-    this.animate(); // Start the animation loop
+    this.x = 2700; // Initial position
+    this.animate();
     this.world = world;
-    this.healthbar = new StatusBar(); // Create a health bar for the boss
-    this.updateHealthbar(); // Update the health bar position
+    this.healthbar = new StatusBar();
+    this.updateHealthbar();
   }
 
   /**
    * Starts the animation loop for the EndBoss.
-   * Handles speed changes during boosts and animates the boss based on its state (walking, alert, etc.).
+   * Manages speed boosts and animations based on the boss's state (walking, alert, etc.).
    */
   animate() {
     setInterval(() => {
@@ -151,59 +160,67 @@ class EndBoss extends MovableObject {
           this.moveLeft();
         }
       }
-    }, 100); // Update animation every 100ms
+    }, 100);
     this.animateIntervalHelper();
   }
 
-  animateBossSpeed(){
+  /**
+   * Handles the speed boost logic for the EndBoss.
+   * Alternates between a boosted and normal speed based on timing intervals.
+   */
+  animateBossSpeed() {
     if (this.boostTime > 0) {
-      this.speed = 30; // Speed boost during attack
-      this.boostTime -= 100; // Decrease boost time
+      this.speed = 30; // Boosted speed
+      this.boostTime -= 100;
     } else {
-      this.speed = 9; // Normal speed after boost
-      this.nextBoost -= 100; // Decrease time to next boost
+      this.speed = 9; // Normal speed
+      this.nextBoost -= 100;
       if (this.nextBoost <= 0) {
-        this.boostTime = 1000; // Activate boost for 1 second
-        this.nextBoost = Math.random() * 5000 + 1000; // Set new random interval
+        this.boostTime = 1000; // Reset boost duration
+        this.nextBoost = Math.random() * 5000 + 1000;
       }
     }
   }
 
   /**
-   * Handles the animation logic for different states of the EndBoss (dead, hurt, walking, alert).
-   * Animates the boss according to its current state and priority.
+   * Handles animation updates for the EndBoss based on its state (e.g., hurt, dead, walking).
+   * The animation state is prioritized in the following order:
+   * 1. Dead
+   * 2. Hurt
+   * 3. Walking/Attacking
+   * 4. Alert
    */
   animateIntervalHelper() {
     setInterval(() => {
       if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD); // Highest priority: Boss is dead
+        this.playAnimation(this.IMAGES_DEAD);
       } else if (this.isHurt()) {
-        this.playAnimation(this.IMAGES_HURT); // Second highest priority: Boss is hurt
-        this.bossAttack = true; // Switch to attack mode when hurt
+        this.playAnimation(this.IMAGES_HURT);
+        this.bossAttack = true;
       } else if (this.bossAttack) {
-        this.playAnimation(this.IMAGES_WALKING); // Third highest priority: Boss is walking/attacking
+        this.playAnimation(this.IMAGES_WALKING);
       } else {
-        this.playAnimation(this.IMAGES_ALERT); // Default state: Boss is in alert mode
+        this.playAnimation(this.IMAGES_ALERT);
       }
-    }, 450); // Update animation every 450ms
+    }, 450);
   }
 
   /**
-   * Updates the position of the health bar to follow the EndBoss.
+   * Updates the position of the health bar to match the EndBoss's position.
    */
   updateHealthbar() {
     setInterval(() => {
-      this.healthbar.x = this.x; // Align health bar horizontally with EndBoss
-      this.healthbar.y = this.y; // Align health bar vertically with EndBoss
-    }, 60); // Update health bar position every 60ms
+      this.healthbar.x = this.x;
+      this.healthbar.y = this.y;
+    }, 60);
   }
 
   /**
    * Draws the EndBoss and its health bar on the canvas.
-   * @param {CanvasRenderingContext2D} ctx The rendering context of the canvas.
+   * @param {CanvasRenderingContext2D} ctx - The rendering context of the canvas.
    */
   draw(ctx) {
-    super.draw(ctx); // Draw the EndBoss image
-    this.healthbar.draw(ctx); // Draw the health bar
+    super.draw(ctx);
+    this.healthbar.draw(ctx);
   }
 }

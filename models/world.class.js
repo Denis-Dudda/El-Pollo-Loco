@@ -242,12 +242,16 @@ class World {
     }
   }
 
-  checkJumpOnHelper(){
-    this.character.jump();
-    if (allSoundsMute) {
-      this.playSound(this.jump_sound);
-    }
+/**
+ * Helper method triggered when the character successfully jumps on an enemy.
+ * Executes the character's jump action and plays the jump sound if sounds are enabled.
+ */
+checkJumpOnHelper() {
+  this.character.jump(); // Triggers the jump animation and mechanics
+  if (allSoundsMute) {
+      this.playSound(this.jump_sound); // Plays the jump sound if sound is not muted
   }
+}
 
   /**
    * Draws all game elements and updates the canvas in a loop.
