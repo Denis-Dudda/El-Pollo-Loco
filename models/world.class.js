@@ -351,12 +351,8 @@ class World {
    * @param {HTMLAudioElement} sound - The sound to be played.
    */
   playSound(sound) {
-    if (!sound.playing) {
+    if (world && allSoundsMute) {
       sound.play();
-      sound.playing = true;
-      sound.onended = () => {
-        sound.playing = false;
-      };
     }
   }
 }

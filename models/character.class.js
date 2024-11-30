@@ -199,6 +199,7 @@ class Character extends MovableObject {
     setTimeout(() => {
       this.world.clearAllIntervals();
       this.showLoseImage = true; // lose img
+      world.gameMusic_sound.pause();
       document.getElementById('btn-restart').classList.remove('d-none');
     }, 400);
   }

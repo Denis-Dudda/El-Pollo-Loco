@@ -20,7 +20,7 @@ let keyboard = new Keyboard();
  * Flag indicating whether all sounds are muted.
  * @type {boolean}
  */
-let allSoundsMute = true;
+let allSoundsMute = false;
 
 /**
  * Initializes the game by setting up a new level and the world instance.
@@ -250,21 +250,22 @@ function showBottomButton() {
  * Restarts the game by stopping the current game music, clearing all intervals, and reinitializing the game.
  */
 function restartGame() {
-  world.gameMusic_sound.pause();
+  
+  
   clearAllIntervals();
   world = null; // Lösche die alte Instanz
   init();       // Erstelle eine neue Instanz
   hideId('btn-restart');
-  checkSounds();
+  
 }
 
 /**
  * Checks whether sounds are muted and resets the mute flag.
  */
 function checkSounds(){
-  if (!allSoundsMute) {
-    allSoundsMute = true;
-  }
+
+  
+  
 }
 
 /**
