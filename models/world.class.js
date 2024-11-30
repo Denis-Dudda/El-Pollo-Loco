@@ -23,7 +23,6 @@ class World {
   gameMusic_sound = new Audio('audio/game-music.mp3');
   jump_sound = new Audio('audio/jump-sound.mp3');
   allSounds = [];
-  knockBack = false;
 
   /**
    * Initializes the World object.
@@ -54,7 +53,7 @@ class World {
    * Sets up the game logic and intervals for collision detection, movement, and sound playback.
    */
   run() {
-    setInterval(() => this.checkCollisions(), 200);
+    setInterval(() => this.checkCollisions(), 20);
     setInterval(() => this.checkCoinCollision(), 100);
     setInterval(() => this.checkBottleCollision(), 100);
     setInterval(() => this.checkThrowObjects(), 100);
@@ -100,7 +99,6 @@ class World {
   checkKnockBack() {
     this.level.enemies.forEach((enemy) => {
       if (this.character.isColliding(enemy) && enemy.type === "endboss") {
-        this.knockBack = true;
         this.character.x -= 4;
       }
     });
