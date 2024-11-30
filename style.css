@@ -236,7 +236,7 @@ h1 {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 950px) {
   canvas{
     width: 100%;
   }
@@ -245,7 +245,7 @@ h1 {
   .info-screen-container,
   .impressum-screen-container{
     width: 100%;
-    height: auto;
+    height: 100%;
     aspect-ratio: 6 / 4;
   }
 }
