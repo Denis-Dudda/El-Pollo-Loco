@@ -1,19 +1,48 @@
+/**
+ * The canvas element used to render the game world.
+ * @type {HTMLCanvasElement}
+ */
 let canvas;
+
+/**
+ * The world instance that holds all the game logic and entities.
+ * @type {World}
+ */
 let world;
+
+/**
+ * The keyboard object for tracking keyboard inputs.
+ * @type {Keyboard}
+ */
 let keyboard = new Keyboard();
+
+/**
+ * Flag indicating whether all sounds are muted.
+ * @type {boolean}
+ */
 let allSoundsMute = true;
- 
+
+/**
+ * Initializes the game by setting up a new level and the world instance.
+ */
 function init() {
   newLevel();
   canvas = document.getElementById('canvas');
   world = new World(canvas, keyboard);
 }
 
+/**
+ * Clears all intervals from the game loop.
+ * Loops through and clears intervals with ids from 1 to 9999.
+ */
 function clearAllIntervals() {
   for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }
 
-// Tastatursteuerung
+/**
+ * Event listener for keyboard press events.
+ * Updates the keyboard state when specific keys are pressed.
+ */
 window.addEventListener('keydown', (e) => {
   if (e.keyCode == 39) {
     keyboard.RIGHT = true;
@@ -40,6 +69,10 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
+/**
+ * Event listener for keyboard release events.
+ * Updates the keyboard state when specific keys are released.
+ */
 window.addEventListener('keyup', (e) => {
   if (e.keyCode == 39) {
     keyboard.RIGHT = false;
@@ -66,6 +99,10 @@ window.addEventListener('keyup', (e) => {
   }
 });
 
+/**
+ * Event listener for DOMContentLoaded event.
+ * Sets up the event listeners for touch and mouse controls.
+ */
 document.addEventListener("DOMContentLoaded", function() {
   // Buttons holen
   const btnLeft = document.getElementById('btn-left');
@@ -168,6 +205,9 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+/**
+ * Starts the game by hiding the start screen, showing buttons, and initializing the game.
+ */
 function startGame() {
   hideScreen();
   showButtons();
@@ -175,25 +215,40 @@ function startGame() {
   showBottomButton();
 }
 
+/**
+ * Hides the start screen and middle button container.
+ */
 function hideScreen(){
   hideId('start-screen');
   hideId('middle-btn');
   document.getElementById('button-cover-container').classList.add('height');
 }
 
+/**
+ * Hides the info screen and shows the middle button.
+ */
 function hideInfo() {
   hideId('info-screen');
   showId('middle-btn');
 }
 
+/**
+ * Shows the top button.
+ */
 function showButtons() {
   showId('top-btn');
 }
 
+/**
+ * Shows the bottom button with a z-index style.
+ */
 function showBottomButton() {
   document.getElementById('bottom-btn').classList.add('z-index');
 }
 
+/**
+ * Restarts the game by stopping the current game music, clearing all intervals, and reinitializing the game.
+ */
 function restartGame() {
   world.gameMusic_sound.pause();
   clearAllIntervals();
@@ -203,43 +258,65 @@ function restartGame() {
   checkSounds();
 }
 
+/**
+ * Checks whether sounds are muted and resets the mute flag.
+ */
 function checkSounds(){
   if (!allSoundsMute) {
     allSoundsMute = true;
   }
 }
 
+/**
+ * Shows the info screen and hides the middle button.
+ */
 function showInfo() {
   hideId('middle-btn');
   showId('info-screen');
 }
 
+/**
+ * Shows the impressum screen and hides the middle button.
+ */
 function showImpressum() {
   hideId('middle-btn');
   showId('impressum-screen');
 }
 
- function hideImpressum(){
+/**
+ * Hides the impressum screen and shows the middle button.
+ */
+function hideImpressum(){
   hideId('impressum-screen');
   showId('middle-btn');
- }
+}
 
+/**
+ * Hides an element by its id.
+ * @param {string} id - The id of the element to hide.
+ */
 function hideId(id) {
   document.getElementById(id).classList.add('d-none');
 }
 
+/**
+ * Shows an element by its id.
+ * @param {string} id - The id of the element to show.
+ */
 function showId(id) {
   document.getElementById(id).classList.remove('d-none');
 }
 
+/**
+ * Mutes or unmutes all game sounds.
+ */
 function muteSounds(){
   allSoundsMute = !allSoundsMute;
   world.allSounds.forEach((audio) => {
     if (!allSoundsMute) {
       audio.pause();  
-    }else{
+    } else {
       audio.play();
     }
   });
 }
-
