@@ -135,9 +135,10 @@ h1 {
 }
 
 .bottom-menu {
-  display: flex;
+  display: none;
   width: 100%;
   justify-content: space-between;
+  z-index: -1;
 }
 
 .left-buttons{
@@ -183,6 +184,10 @@ h1 {
 
  .height{
   height: 480px;
+ }
+
+ .z-index{
+  z-index: 99;
  }
 
  /* From Uiverse.io by cssbuttons-io */ 
@@ -250,6 +255,9 @@ h1 {
     width: 100%;
     height: 100%;
     aspect-ratio: 6 / 4;
+  }
+  .bottom-menu{
+    display: flex;
   }
 }
 

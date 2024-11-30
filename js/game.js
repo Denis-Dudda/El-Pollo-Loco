@@ -172,6 +172,7 @@ function startGame() {
   hideScreen();
   showButtons();
   init();
+  showBottomButton();
 }
 
 function hideScreen(){
@@ -187,7 +188,10 @@ function hideInfo() {
 
 function showButtons() {
   showId('top-btn');
-  showId('bottom-btn');
+}
+
+function showBottomButton() {
+  document.getElementById('bottom-btn').classList.add('z-index');
 }
 
 function restartGame() {
