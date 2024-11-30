@@ -69,15 +69,33 @@ class EndBoss extends MovableObject {
   
 
   animate() {
-      setInterval(() => {
-        if (this.bossAttack){
+    let boostTime = 1000; // Timer, um die Erhöhung zu kontrollieren
+    let nextBoost = Math.random() * 5000 + 2000; // Zufälliges Intervall bis zum nächsten Boost
+  
+    setInterval(() => {
+      if (this.bossAttack) {
+        if (boostTime > 0) {
+          // Während des Boosts
+          this.speed = 30;
+          boostTime -= 100; // Boost läuft weiter
+        } else {
+          // Normalbetrieb
           this.speed = 9;
-          if (!this.isDead()) {
-            this.moveLeft();    
-          }}
-      },100);      
-      this.animateIntervalHelper();
-    }
+          nextBoost -= 100; // Zeit bis zum nächsten Boost verringern
+          if (nextBoost <= 0) {
+            boostTime = 1000; // Boost für 1 Sekunde aktivieren
+            nextBoost = Math.random() * 5000 + 1000; // Neues Zufallsintervall setzen
+          }
+        }
+  
+        // Bewegung basierend auf aktueller Geschwindigkeit
+        if (!this.isDead()) {
+          this.moveLeft();
+        }
+      }
+    }, 100); // Animation alle 100ms
+    this.animateIntervalHelper();
+  }
 
   animateIntervalHelper(){
     setInterval(() => {
