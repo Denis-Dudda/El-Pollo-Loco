@@ -235,13 +235,17 @@ class World {
             setTimeout(() => {
               this.level.enemies.splice(i, 1);
             }, 300);
-            this.character.jump();
-            if (allSoundsMute) {
-              this.playSound(this.jump_sound);
-            }
+            this.checkJumpOnHelper();
           }
         }
       });
+    }
+  }
+
+  checkJumpOnHelper(){
+    this.character.jump();
+    if (allSoundsMute) {
+      this.playSound(this.jump_sound);
     }
   }
 
