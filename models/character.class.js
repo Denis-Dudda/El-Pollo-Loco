@@ -148,11 +148,7 @@ class Character extends MovableObject {
     'img/2_character_pepe/1_idle/long_idle/I-20.png',
   ];
 
-  /**
-   * Sound for walking.
-   * @type {Audio}
-   */
-  waking_sound = new Audio('audio/walking.mp3');
+
 
   /**
    * Sound for jumping.
@@ -167,7 +163,7 @@ class Character extends MovableObject {
   animate() {
     // Bewegung und Kamera
     setInterval(() => {
-      this.waking_sound.pause();
+      this.world.walking_sound.pause();
       this.animateHelperMoveLeftRight();
       this.animateHelperJumpAndSleep();
     }, 1000 / 60);
@@ -200,6 +196,7 @@ class Character extends MovableObject {
       this.world.clearAllIntervals();
       this.showLoseImage = true; // lose img
       world.gameMusic_sound.pause();
+      world.walking_sound.pause();
       document.getElementById('btn-restart').classList.remove('d-none');
     }, 400);
   }
@@ -258,7 +255,7 @@ class Character extends MovableObject {
       this.moveRight();
       this.otherDirection = false;
       if (allSoundsMute) {
-        this.waking_sound.play();
+        this.world.walking_sound.play();
       }
       this.lastActionTime = Date.now(); // Reset bei Bewegung
       this.isSleeping = false;
@@ -267,7 +264,7 @@ class Character extends MovableObject {
       this.moveLeft();
       this.otherDirection = true;
       if (allSoundsMute) {
-        this.waking_sound.play();
+        this.world.walking_sound.play();
       }
       this.lastActionTime = Date.now(); // Reset bei Bewegung
       this.isSleeping = false;

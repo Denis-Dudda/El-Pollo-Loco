@@ -22,6 +22,7 @@ class World {
   brokeBotlle_sound = new Audio('audio/broke-glas.mp3');
   gameMusic_sound = new Audio('audio/game-music.mp3');
   jump_sound = new Audio('audio/jump-sound.mp3');
+  walking_sound = new Audio('audio/walking.mp3');
   allSounds = [];
 
   /**
@@ -59,7 +60,7 @@ class World {
     setInterval(() => this.checkThrowObjects(), 100);
     setInterval(() => this.checkJumpOn(), 10);
     setInterval(() => this.checkKnockBack(), 1);
-    setInterval(() => this.characterCollision(), 800);
+    setInterval(() => this.characterCollision(), 200);
     setInterval(() => this.playSound(this.gameMusic_sound), 200);
   }
 
@@ -72,6 +73,7 @@ class World {
     this.allSounds.push(this.brokeBotlle_sound);
     this.allSounds.push(this.gameMusic_sound);
     this.allSounds.push(this.jump_sound);
+    this.allSounds.push(this.walking_sound);
   }
 
   /**
