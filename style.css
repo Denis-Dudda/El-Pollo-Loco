@@ -267,7 +267,6 @@ h1 {
   .info-keys{
     font-size: 22px;
   }
-
 }
 
 @media screen and (orientation:portrait) {
@@ -276,3 +275,11 @@ h1 {
   } 
 }
 
+@media (max-height: 300px){
+  .info-description{
+    font-size: 16px;
+  }
+  .info-keys{
+    font-size: 16px;
+  }
+}
