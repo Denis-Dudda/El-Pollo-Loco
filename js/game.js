@@ -321,6 +321,9 @@ function muteSounds(){
   });
 }
 
+/**
+ * Change the sound icon between sound and mute
+ */
 function changeIcon() {
   const soundIcon = document.getElementById('mute-btn');
   soundIcon.innerHTML = ``;
