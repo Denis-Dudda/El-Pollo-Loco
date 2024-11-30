@@ -164,7 +164,8 @@ class Character extends MovableObject {
     // Bewegung und Kamera
     setInterval(() => {
       this.world.walking_sound.pause();
-      this.animateHelperMoveLeftRight();
+      this.animateHelperMoveLeft();
+      this.animateHelperMoveRight();
       this.animateHelperJumpAndSleep();
     }, 1000 / 60);
 
@@ -181,9 +182,7 @@ class Character extends MovableObject {
         this.playWalk(now);
       } else if (now - this.lastActionTime > 5000) {
         this.playSleep();
-      } else {
-        this.playStay();
-      }
+      } else {this.playStay();}
     }, 150);
   }
 
@@ -250,7 +249,7 @@ class Character extends MovableObject {
   /**
    * Helper function for moving the character left or right based on keyboard input.
    */
-  animateHelperMoveLeftRight() {
+  animateHelperMoveLeft() {
     if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
       this.moveRight();
       this.otherDirection = false;
@@ -260,6 +259,9 @@ class Character extends MovableObject {
       this.lastActionTime = Date.now(); // Reset bei Bewegung
       this.isSleeping = false;
     }
+  }
+
+  animateHelperMoveRight(){
     if (this.world.keyboard.LEFT && this.x > -600) {
       this.moveLeft();
       this.otherDirection = true;
