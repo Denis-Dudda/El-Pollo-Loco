@@ -300,6 +300,18 @@ function showId(id) {
  * Mutes or unmutes all game sounds.
  */
 function muteSounds(){
+  changeIcon();
+  allSoundsMute = !allSoundsMute;
+  world.allSounds.forEach((audio) => {
+    if (!allSoundsMute) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+  });
+}
+
+function changeIcon() {
   const soundIcon = document.getElementById('mute-btn');
   soundIcon.innerHTML = ``;
   if (!allSoundsMute) {
@@ -307,14 +319,4 @@ function muteSounds(){
   }else{
     soundIcon.innerHTML = `<img class="sound-icon" src="./img/mute-icon.png" alt="mute-icon">`;
   }
-  allSoundsMute = !allSoundsMute;
-  world.allSounds.forEach((audio) => {
-    if (!allSoundsMute) {
-      audio.pause();
-        
-        
-    } else {
-      audio.play();
-    }
-  });
 }
