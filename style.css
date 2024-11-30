@@ -278,6 +278,7 @@ h1 {
 @media screen and (orientation:portrait) {
   .landscape{
     display: flex;
+    z-index: 9999;
   } 
 }
 
