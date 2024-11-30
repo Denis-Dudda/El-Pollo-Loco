@@ -133,7 +133,7 @@ h1 {
 }
 
 .bottom-menu {
-  display: none;
+  display: flex;
   width: 100%;
   justify-content: space-between;
   z-index: -1;
@@ -254,9 +254,7 @@ h1 {
     height: 100%;
     aspect-ratio: 6 / 4;
   }
-  .bottom-menu{
-    display: flex;
-  }
+
 }
 
 @media only screen and (max-height: 480px) {

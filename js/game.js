@@ -212,7 +212,7 @@ function startGame() {
   hideScreen();
   showButtons();
   init();
-  showBottomButton();
+  checkDisplay();
 }
 
 /**
@@ -239,11 +239,21 @@ function showButtons() {
   showId('top-btn');
 }
 
+function checkDisplay() {
+    let isTouchDevice = 'ontouchstart' in window;
+    showBottomButton(isTouchDevice);
+}
+
 /**
  * Shows the bottom button with a z-index style.
  */
-function showBottomButton() {
+function showBottomButton(isTouchDevice) {
   document.getElementById('bottom-btn').classList.add('z-index');
+  if (isTouchDevice) {
+    document.getElementById('bottom-btn').classList.remove('d-none');
+  }else{
+    document.getElementById('bottom-btn').classList.add('d-none');
+  }
 }
 
 /**
