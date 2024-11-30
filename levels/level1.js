@@ -75,10 +75,10 @@ level1 = new Level(
   ],
   [
     new Bottle(450, 350),
-    new Bottle(600, 350),
-    new Bottle(800, 350),
-    new Bottle(1000, 350),
-    new Bottle(1200, 350),
+    new Bottle(750, 350),
+    new Bottle(1100, 350),
+    new Bottle(1400, 350),
+    new Bottle(2000, 350),
   ],
 );
 }
