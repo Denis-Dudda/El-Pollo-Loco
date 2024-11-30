@@ -95,10 +95,7 @@ class World {
     this.level.enemies.forEach((enemy) => {
       if ((this.character.isColliding(enemy) && enemy.type == "endboss")) { 
           this.knockBack = true;
-            if (this.knockBack) {
-              this.character.x -= 2;
-              this.knockBack = false;
-            }}
+          this.character.x -= 4;}
     });
   }
 
