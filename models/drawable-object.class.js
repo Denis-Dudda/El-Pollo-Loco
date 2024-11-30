@@ -18,12 +18,7 @@ class DrawableObject {
   }
 
   draw(ctx){
-  //  try {
     ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-  //  } catch (e){
-  //    console.log('error loading image',e);
-  //    console.log('coud not load img', this.img);
-  //  }
   }
 
   loadImages(arr) {
@@ -33,22 +28,4 @@ class DrawableObject {
       this.imageCache[path] = img;      
     });
   }
-
- // drawFrame(ctx){
- //   
- //   if (this instanceof Character || this instanceof Chicken || this instanceof Coin || this instanceof Bottle || this instanceof EndBoss || this instanceof ThrowableObject || this instanceof SmallChicken) {               
- //     ctx.beginPath();
- //     ctx.lineWidth = '5';
- //     ctx.strokeStyle = 'blue';
- //     ctx.rect(
- //       this.x + this.offsetX,                       // X-Position mit linkem Offset
- //       this.y + this.offsetY,                       // Y-Position mit oberem Offset                                                               
- //       this.width - this.offsetX - this.offsetWidth, // Breite mit linken und rechten Offsets
- //       this.height - this.offsetY - this.offsetHeight // Höhe mit oberen und unteren Offsets
- //     );
- //     ctx.stroke();      
- //   }
- //
- // }
-
 }

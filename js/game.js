@@ -250,22 +250,10 @@ function showBottomButton() {
  * Restarts the game by stopping the current game music, clearing all intervals, and reinitializing the game.
  */
 function restartGame() {
-  
-  
   clearAllIntervals();
   world = null; // Lösche die alte Instanz
   init();       // Erstelle eine neue Instanz
   hideId('btn-restart');
-  
-}
-
-/**
- * Checks whether sounds are muted and resets the mute flag.
- */
-function checkSounds(){
-
-  
-  
 }
 
 /**
