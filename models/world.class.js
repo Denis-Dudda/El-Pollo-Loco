@@ -89,7 +89,7 @@ class World {
         this.hurtCoolDown = true;
         setTimeout(() => {
           this.hurtCoolDown = false;
-        }, 600);
+        }, 300);
       }
     });
   }
